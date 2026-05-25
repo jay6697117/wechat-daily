@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>20260524话《硬盘一转，群聊开会》</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101114;
+      --panel: #17191f;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --line: #2a2d36;
+      --accent: #75d08a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(117, 208, 138, 0.12), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(16, 17, 20, 0.88);
+      backdrop-filter: blur(16px);
+    }
+
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(22px, 4vw, 34px);
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 22px 14px 56px;
+    }
+
+    .page-card {
+      margin: 0 auto 28px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(23, 25, 31, 0.82);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .page-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 12px;
+      padding: 0 4px;
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .page-title span:last-child {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 760px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px 36px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        padding: 14px 12px;
+      }
+
+      main {
+        padding: 14px 8px 42px;
+      }
+
+      .page-card {
+        padding: 8px;
+        border-radius: 16px;
+        margin-bottom: 18px;
+      }
+
+      img {
+        border-radius: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>20260524话《硬盘一转，群聊开会》</h1>
+      <p class="subtitle">半抽象群聊漫画：微信群消息触发的小剧场。</p>
+      <nav aria-label="页面导航">
+        <a href="#page-1">第一页</a>
+        <a href="#page-2">第二页</a>
+        <a href="#page-3">第三页</a>
+        <a href="#page-4">第四页</a>
+        <a href="#page-5">第五页</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="page-1" class="page-card">
+      <h2 class="page-title"><span>第一页《GPT重置，群友醒来》</span><span>1 / 5</span></h2>
+      <img src="20260524话_第一页_GPT重置群友醒来.png" alt="20260524话 第一页《GPT重置，群友醒来》" loading="eager" />
+    </section>
+
+    <section id="page-2" class="page-card">
+      <h2 class="page-title"><span>第二页《硬盘卡住，群聊变急诊》</span><span>2 / 5</span></h2>
+      <img src="20260524话_第二页_硬盘卡住群聊变急诊.png" alt="20260524话 第二页《硬盘卡住，群聊变急诊》" loading="lazy" />
+    </section>
+
+    <section id="page-3" class="page-card">
+      <h2 class="page-title"><span>第三页《Claude Code也要先开机》</span><span>3 / 5</span></h2>
+      <img src="20260524话_第三页_ClaudeCode也要先开机.png" alt="20260524话 第三页《Claude Code也要先开机》" loading="lazy" />
+    </section>
+
+    <section id="page-4" class="page-card">
+      <h2 class="page-title"><span>第四页《机械盘最怕突然断电》</span><span>4 / 5</span></h2>
+      <img src="20260524话_第四页_机械盘最怕突然断电.png" alt="20260524话 第四页《机械盘最怕突然断电》" loading="lazy" />
+    </section>
+
+    <section id="page-5" class="page-card">
+      <h2 class="page-title"><span>第五页《硬盘未决，账号又寄》</span><span>5 / 5</span></h2>
+      <img src="20260524话_第五页_硬盘未决账号又寄.png" alt="20260524话 第五页《硬盘未决，账号又寄》" loading="lazy" />
+    </section>
+  </main>
+
+  <footer>
+    生成目录：/Users/zhangjinhui/Desktop/wechat-daily/20260524
+  </footer>
+</body>
+</html>
