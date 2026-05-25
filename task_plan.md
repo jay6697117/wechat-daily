@@ -14,11 +14,11 @@
 | Phase | Status | Owner | Notes |
 |---|---|---|---|
 | 1. Restore context and create planning files | complete | main | Session catchup completed; planning files created. |
-| 2. Create agent team and assign work | pending | main | Use team members for reference analysis and chat extraction. |
-| 3. Extract 2026-05-25 chat record | pending | data agent | Must use `wechat-cli`; save raw/clean record under date directory. |
-| 4. Analyze 2026-05-24 reference logic | pending | reference agent | Extract script structure, episode style, page logic, file naming pattern. |
-| 5. Draft 2026-05-25 script | pending | script agent/main | Use actual 2026-05-25 chat content; no comic image generation. |
-| 6. Validate files and report for confirmation | pending | main | Check directory, filenames, old/new scope, and no images generated. |
+| 2. Create agent team and assign work | complete | main | Team created; reference analysis completed; failed/idle agents were handled by main controller. |
+| 3. Extract 2026-05-25 chat record | complete | main | Used `wechat-cli history` and saved the chat record under the date directory. |
+| 4. Analyze 2026-05-24 reference logic | complete | reference agent | Extracted script structure, episode style, page logic, and naming rules. |
+| 5. Draft 2026-05-25 script | complete | main | Wrote the script based on actual 2026-05-25 chat content; no comic images generated. |
+| 6. Validate files and report for confirmation | complete | main | Confirmed directory contains only chat record and script; no images or index generated. |
 
 ## Decisions
 - Directory format must be first-level group name, second-level date: `AI全书学习交流群/2026-05-25/`.
@@ -29,3 +29,4 @@
 | Error | Attempt | Resolution |
 |---|---|---|
 | `CLAUDE_PLUGIN_ROOT` was empty, so session-catchup path resolved to `/scripts/session-catchup.py` | Ran catchup with environment variable | Re-ran catchup using explicit path `/Users/zhangjinhui/.claude/skills/planning-with-files/scripts/session-catchup.py`. |
+| Full chat record read exceeded token limit | Read entire 1105-line chat file | Use offset/limit reads and targeted statistics instead of full read. |
