@@ -63,6 +63,8 @@
 - Stopped old resume task `bxcahmxmk`.
 - Re-read 2026-05-24 reference images and identified required visual grammar: top title bar, 3 horizontal panels, thick black borders, dark blue group-chat stage, phone/chat props, 沙雕鱼/group avatars, bottom punchline bar.
 - Need to regenerate all 14 images from page 1, overwriting previous generated PNGs.
+- Regenerated page 1 with 2026-05-24 page 1 as a real reference image; visual inspection showed the style now matches the reference layout.
+- Started background task `becc23l3a` to overwrite-regenerate pages 2-14 using the same 2026-05-24 visual grammar.
 
 ## Next
-- Regenerate all 14 comic images using the 2026-05-24 visual grammar, then create `AI全书学习交流群/2026-05-25/index.html` and validate outputs.
+- Wait for background image generation `becc23l3a` to complete, then create `AI全书学习交流群/2026-05-25/index.html` and validate outputs.
