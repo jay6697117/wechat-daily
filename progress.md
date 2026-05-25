@@ -66,5 +66,12 @@
 - Regenerated page 1 with 2026-05-24 page 1 as a real reference image; visual inspection showed the style now matches the reference layout.
 - Started background task `becc23l3a` to overwrite-regenerate pages 2-14 using the same 2026-05-24 visual grammar.
 
+## Panel Count Correction
+- User corrected that the page layout should not force three panels; panel count must follow each page's actual script beats.
+- Stopped task `becc23l3a`.
+- Re-read additional 2026-05-24 reference pages; the key missing detail was the white speech bubbles with black outlines, colored nickname tags, and group-avatar interactions.
+- Regenerated page 1 using 2026-05-24 page 4 as style reference; visual check showed the bubble/nickname/group-chat style is much closer.
+- Started background task `bxzafpkiz` to regenerate pages 2-14 using actual panel counts: pages 3/12/13/14 have 4 panels, the others have 3.
+
 ## Next
-- Wait for background image generation `becc23l3a` to complete, then create `AI全书学习交流群/2026-05-25/index.html` and validate outputs.
+- Wait for background image generation `bxzafpkiz` to complete, then create `AI全书学习交流群/2026-05-25/index.html` and validate outputs.
