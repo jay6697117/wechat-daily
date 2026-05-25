@@ -45,5 +45,24 @@
 - Verified no concrete account-operation platform/price/link details remain in the script.
 - Verified the 2026-05-25 directory still contains only the chat record and script.
 
+## Comic Generation Phase
+- User confirmed starting comic generation with `.claude/skills/codex-gateway-imagegen`, then creating `index.html`; all should use agent team workflow.
+- Reused existing team `wechat-daily-20260525` because creating a second team failed while already leading this team.
+- Created team tasks for 14 comic PNGs, `index.html`, and validation.
+- `image-generator` and `image-producer` both went idle without producing PNG files.
+- Main team lead took over the stuck image task and started background gateway helper generation for all 14 images.
+- Background image-generation task `b4o2tr9zh` failed on the first page with `No image_generation_call result returned`.
+- A direct CLI retry for page 1 and a minimal helper CLI test also returned `No image_generation_call result returned`.
+- Debugging showed the gateway can return valid `image_generation_call` results when using the helper's internal `request_image` / `build_payload` functions.
+- Started a new background batch using helper internals with safer abstract prompts and retry handling.
+- Background image-generation task `b6gdrpd9m` generated pages 1-3, then failed on page 4 with `RemoteDisconnected`.
+- Started breakpoint resume task `bxcahmxmk`, which skips existing PNGs and retries transient network/no-image-result failures with the same prompt.
+
+## Style Correction
+- User interrupted and said current 2026-05-25 comic images deviate from the 2026-05-24 style.
+- Stopped old resume task `bxcahmxmk`.
+- Re-read 2026-05-24 reference images and identified required visual grammar: top title bar, 3 horizontal panels, thick black borders, dark blue group-chat stage, phone/chat props, 沙雕鱼/group avatars, bottom punchline bar.
+- Need to regenerate all 14 images from page 1, overwriting previous generated PNGs.
+
 ## Next
-- Wait for user confirmation before generating comic images or `index.html`.
+- Regenerate all 14 comic images using the 2026-05-24 visual grammar, then create `AI全书学习交流群/2026-05-25/index.html` and validate outputs.
