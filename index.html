@@ -215,6 +215,8 @@
       background: var(--card);
       box-shadow: 0 14px 42px rgba(39, 97, 82, 0.1);
       backdrop-filter: blur(16px);
+      content-visibility: auto;
+      contain-intrinsic-size: 228px;
       transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
       cursor: pointer;
     }
@@ -329,6 +331,8 @@
       border: 1px solid var(--line);
       border-radius: var(--radius-md);
       background: var(--card-strong);
+      content-visibility: auto;
+      contain-intrinsic-size: 132px;
       transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
     }
 
@@ -401,6 +405,84 @@
       text-align: center;
     }
 
+    .skeleton-card,
+    .skeleton-episode {
+      pointer-events: none;
+      cursor: progress;
+    }
+
+    .skeleton-block,
+    .skeleton-line,
+    .skeleton-pill {
+      display: block;
+      overflow: hidden;
+      border-radius: 999px;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.24), rgba(127, 200, 169, 0.2), rgba(255, 255, 255, 0.24)),
+        rgba(255, 255, 255, 0.66);
+      background-size: 220% 100%, 100% 100%;
+      animation: skeleton-shimmer 1400ms ease-in-out infinite;
+    }
+
+    .skeleton-block {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+    }
+
+    .skeleton-line {
+      width: 100%;
+      height: 14px;
+    }
+
+    .skeleton-line.title {
+      width: min(360px, 64%);
+      height: 24px;
+    }
+
+    .skeleton-line.short {
+      width: 48%;
+    }
+
+    .skeleton-pill {
+      width: 96px;
+      height: 30px;
+    }
+
+    .skeleton-episode .skeleton-block {
+      width: 100%;
+      height: 72px;
+      border-radius: 16px;
+    }
+
+    @keyframes skeleton-shimmer {
+      from {
+        background-position: 120% 0, 0 0;
+      }
+
+      to {
+        background-position: -120% 0, 0 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .group-card,
+      .episode-card,
+      .open-mark {
+        transition: none;
+      }
+
+      .skeleton-block,
+      .skeleton-line,
+      .skeleton-pill {
+        animation: none;
+      }
+    }
+
     footer {
       margin-top: 42px;
       color: var(--muted);
@@ -470,19 +552,49 @@
         <h2 id="groupsTitle">选择群入口</h2>
         <p>点击一个群后，下方会显示这个群按 YYYY-MM-DD 日期整理好的漫画入口。</p>
       </div>
-      <div id="groupGrid" class="group-grid"></div>
+      <div id="groupGrid" class="group-grid" aria-busy="true">
+        <div class="group-card skeleton-card" aria-hidden="true">
+          <span class="skeleton-block"></span>
+          <span>
+            <span class="skeleton-line title"></span>
+            <span class="skeleton-line"></span>
+            <span class="skeleton-line short"></span>
+          </span>
+          <span class="group-meta">
+            <span class="skeleton-pill"></span>
+            <span class="skeleton-pill"></span>
+          </span>
+        </div>
+      </div>
     </section>
 
-    <section id="library" class="library-panel" aria-live="polite">
+    <section id="library" class="library-panel" aria-live="polite" aria-busy="true">
       <div class="library-title">
         <div>
-          <h2 id="activeGroupName">请选择一个群</h2>
-          <p id="activeGroupDesc">群入口会显示在这里。</p>
+          <h2 id="activeGroupName">正在整理漫画馆</h2>
+          <p id="activeGroupDesc">群入口和日期入口马上显示。</p>
         </div>
-        <span id="activeGroupMeta" class="pill">等待选择</span>
+        <span id="activeGroupMeta" class="pill">载入中</span>
       </div>
-      <div id="dateList" class="date-list">
-        <div class="empty-state">请选择上面的群入口。</div>
+      <div id="dateList" class="date-list" aria-busy="true">
+        <div class="episode-card skeleton-episode" aria-hidden="true">
+          <span class="skeleton-block"></span>
+          <span class="episode-main">
+            <span class="skeleton-line title"></span>
+            <span class="skeleton-line"></span>
+            <span class="skeleton-line short"></span>
+          </span>
+          <span class="skeleton-pill"></span>
+        </div>
+        <div class="episode-card skeleton-episode" aria-hidden="true">
+          <span class="skeleton-block"></span>
+          <span class="episode-main">
+            <span class="skeleton-line title"></span>
+            <span class="skeleton-line"></span>
+            <span class="skeleton-line short"></span>
+          </span>
+          <span class="skeleton-pill"></span>
+        </div>
       </div>
     </section>
 
@@ -518,6 +630,7 @@
 
     const groupGrid = document.getElementById("groupGrid");
     const dateList = document.getElementById("dateList");
+    const library = document.getElementById("library");
     const activeGroupName = document.getElementById("activeGroupName");
     const activeGroupDesc = document.getElementById("activeGroupDesc");
     const activeGroupMeta = document.getElementById("activeGroupMeta");
@@ -533,6 +646,22 @@
         "'": "&#39;",
         '"': "&quot;"
       }[char]));
+    }
+
+    function setCatalogBusy(isBusy) {
+      groupGrid.setAttribute("aria-busy", String(isBusy));
+      dateList.setAttribute("aria-busy", String(isBusy));
+      library.setAttribute("aria-busy", String(isBusy));
+    }
+
+    function scheduleInitialRender(callback) {
+      window.requestAnimationFrame(() => {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(callback, { timeout: 900 });
+        } else {
+          window.setTimeout(callback, 80);
+        }
+      });
     }
 
     function renderStats() {
@@ -600,7 +729,10 @@
     }
 
     renderStats();
-    selectGroup(location.hash.replace("#", "") || catalog[0]?.id, false);
+    scheduleInitialRender(() => {
+      selectGroup(location.hash.replace("#", "") || catalog[0]?.id, false);
+      setCatalogBusy(false);
+    });
   </script>
 </body>
 </html>

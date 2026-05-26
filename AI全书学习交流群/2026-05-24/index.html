@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>20260524话《硬盘一转，群聊开会》</title>
+  <link rel="preload" as="image" href="20260524话_第一页_GPT重置群友醒来.png" fetchpriority="high" />
   <style>
     :root {
       color-scheme: dark;
@@ -196,10 +197,15 @@
       width: 100%;
       max-width: 860px;
       height: auto;
+      aspect-ratio: 2 / 3;
+      object-fit: contain;
       margin: 0 auto;
       border: 8px solid var(--paper);
       border-radius: 20px;
-      background: var(--paper);
+      background:
+        linear-gradient(90deg, rgba(255, 253, 244, 0.12), rgba(118, 240, 164, 0.08), rgba(255, 253, 244, 0.12)),
+        linear-gradient(135deg, rgba(255, 253, 244, 0.96), rgba(236, 245, 229, 0.88));
+      background-size: 200% 100%, 100% 100%;
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
       cursor: zoom-in;
       transition: transform 180ms ease, box-shadow 180ms ease;
@@ -437,27 +443,27 @@
   <main>
     <section id="page-1" class="page-card">
       <h2 class="page-title"><span>第一页《GPT重置，群友醒来》</span><span>1 / 5</span></h2>
-      <img src="20260524话_第一页_GPT重置群友醒来.png" alt="20260524话 第一页《GPT重置，群友醒来》" loading="eager" />
+      <img src="20260524话_第一页_GPT重置群友醒来.png" alt="20260524话 第一页《GPT重置，群友醒来》" loading="eager" fetchpriority="high" width="1024" height="1536" decoding="async" />
     </section>
 
     <section id="page-2" class="page-card">
       <h2 class="page-title"><span>第二页《硬盘卡住，群聊变急诊》</span><span>2 / 5</span></h2>
-      <img src="20260524话_第二页_硬盘卡住群聊变急诊.png" alt="20260524话 第二页《硬盘卡住，群聊变急诊》" loading="lazy" />
+      <img src="20260524话_第二页_硬盘卡住群聊变急诊.png" alt="20260524话 第二页《硬盘卡住，群聊变急诊》" loading="lazy" fetchpriority="low" width="1024" height="1536" decoding="async" />
     </section>
 
     <section id="page-3" class="page-card">
       <h2 class="page-title"><span>第三页《Claude Code也要先开机》</span><span>3 / 5</span></h2>
-      <img src="20260524话_第三页_ClaudeCode也要先开机.png" alt="20260524话 第三页《Claude Code也要先开机》" loading="lazy" />
+      <img src="20260524话_第三页_ClaudeCode也要先开机.png" alt="20260524话 第三页《Claude Code也要先开机》" loading="lazy" fetchpriority="low" width="1024" height="1536" decoding="async" />
     </section>
 
     <section id="page-4" class="page-card">
       <h2 class="page-title"><span>第四页《机械盘最怕突然断电》</span><span>4 / 5</span></h2>
-      <img src="20260524话_第四页_机械盘最怕突然断电.png" alt="20260524话 第四页《机械盘最怕突然断电》" loading="lazy" />
+      <img src="20260524话_第四页_机械盘最怕突然断电.png" alt="20260524话 第四页《机械盘最怕突然断电》" loading="lazy" fetchpriority="low" width="1024" height="1536" decoding="async" />
     </section>
 
     <section id="page-5" class="page-card">
       <h2 class="page-title"><span>第五页《硬盘未决，账号又寄》</span><span>5 / 5</span></h2>
-      <img src="20260524话_第五页_硬盘未决账号又寄.png" alt="20260524话 第五页《硬盘未决，账号又寄》" loading="lazy" />
+      <img src="20260524话_第五页_硬盘未决账号又寄.png" alt="20260524话 第五页《硬盘未决，账号又寄》" loading="lazy" fetchpriority="low" width="1024" height="1536" decoding="async" />
     </section>
   </main>
 
@@ -475,7 +481,7 @@
     </div>
     <button class="viewer-nav viewer-prev" id="viewer-prev" type="button" aria-label="上一页">‹</button>
     <div class="viewer-stage" id="viewer-stage">
-      <img class="viewer-image" id="viewer-image" alt="" />
+      <img class="viewer-image" id="viewer-image" alt="" width="1024" height="1536" decoding="async" />
     </div>
     <button class="viewer-nav viewer-next" id="viewer-next" type="button" aria-label="下一页">›</button>
   </div>
@@ -491,6 +497,36 @@
       const title = card.querySelector(".page-title span:first-child").textContent;
       return { image, title, src: image.getAttribute("src"), alt: image.alt };
     });
+
+    const warmedPages = new Set();
+
+    function warmPage(index) {
+      if (index < 0 || index >= pages.length || warmedPages.has(index)) {
+        return;
+      }
+      warmedPages.add(index);
+      const img = new Image();
+      img.decoding = "async";
+      img.src = pages[index].src;
+    }
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(() => warmPage(1), { timeout: 1800 });
+    } else {
+      window.setTimeout(() => warmPage(1), 600);
+    }
+
+    if ("IntersectionObserver" in window) {
+      const warmObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const index = cards.indexOf(entry.target);
+          warmPage(index + 1);
+        });
+      }, { rootMargin: "300px 0px", threshold: 0.01 });
+
+      cards.forEach((card) => warmObserver.observe(card));
+    }
 
     const viewer = document.getElementById("viewer");
     const viewerImage = document.getElementById("viewer-image");
@@ -546,6 +582,8 @@
       viewerTitle.textContent = page.title;
       viewerCounter.textContent = `${currentIndex + 1} / ${pages.length}`;
       resetZoom();
+      warmPage(currentIndex - 1);
+      warmPage(currentIndex + 1);
     }
 
     function getCurrentPageIndex() {
