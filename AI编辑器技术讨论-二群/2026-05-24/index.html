@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>20260524话《显卡烟囱，AI生图审判》</title>
+  <link rel="icon" href="data:," />
+  <link rel="preload" as="image" href="20260524话_第一页_种田开场应试教育赢了.png" fetchpriority="high" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050914;
+      --panel: rgba(10, 19, 34, 0.78);
+      --panel-strong: rgba(4, 8, 17, 0.92);
+      --text: #f8fbff;
+      --muted: #adbbcc;
+      --line: rgba(157, 205, 255, 0.17);
+      --accent: #82f7c5;
+      --accent-strong: #35d694;
+      --accent-blue: #79b8ff;
+      --paper: #fffdf4;
+      --focus: rgba(130, 247, 197, 0.9);
+      --shadow: rgba(0, 0, 0, 0.58);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(130, 247, 197, 0.19), transparent 25rem),
+        radial-gradient(circle at 88% 18%, rgba(121, 184, 255, 0.18), transparent 23rem),
+        radial-gradient(circle at 50% 92%, rgba(255, 224, 138, 0.1), transparent 27rem),
+        linear-gradient(135deg, var(--bg) 0%, #0b1730 48%, #030610 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      content: "";
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at top, #000 0, transparent 72%);
+    }
+
+    body.viewer-open {
+      overflow: hidden;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    .page-card > img:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(5, 9, 20, 0.92), rgba(5, 9, 20, 0.76));
+      backdrop-filter: blur(22px) saturate(150%);
+      box-shadow: 0 18px 70px rgba(0, 0, 0, 0.34);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 22px 16px;
+    }
+
+    h1 {
+      margin: 0;
+      color: transparent;
+      background: linear-gradient(135deg, #ffffff 0%, #dfffee 42%, #a7d2ff 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      letter-spacing: -0.04em;
+      font-size: clamp(24px, 4vw, 42px);
+      line-height: 1.1;
+      text-shadow: 0 18px 58px rgba(130, 247, 197, 0.12);
+    }
+
+    .subtitle {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    nav,
+    .reader-actions {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    nav {
+      overflow-x: auto;
+      padding-bottom: 3px;
+      scrollbar-width: thin;
+    }
+
+    nav a {
+      flex: 0 0 auto;
+    }
+
+    .reader-actions {
+      flex-wrap: wrap;
+    }
+
+    nav a,
+    .reader-button,
+    .viewer-button {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 1;
+      cursor: pointer;
+      transition: border-color 160ms ease, color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    nav a,
+    .reader-button {
+      padding: 11px 13px;
+    }
+
+    nav a:hover,
+    .reader-button:hover,
+    .viewer-button:hover {
+      border-color: rgba(130, 247, 197, 0.75);
+      background: rgba(130, 247, 197, 0.12);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .reader-button.primary {
+      border-color: rgba(130, 247, 197, 0.56);
+      background: linear-gradient(135deg, rgba(130, 247, 197, 0.96), rgba(121, 184, 255, 0.78));
+      color: #04101c;
+      font-weight: 800;
+      box-shadow: 0 12px 34px rgba(53, 214, 148, 0.24);
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 30px 16px 62px;
+    }
+
+    .page-card {
+      position: relative;
+      max-width: 930px;
+      margin: 0 auto 34px;
+      padding: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(130, 247, 197, 0.09), transparent 34%),
+        linear-gradient(180deg, rgba(12, 24, 43, 0.92), rgba(5, 9, 20, 0.86));
+      box-shadow: 0 28px 86px var(--shadow);
+      content-visibility: auto;
+      contain-intrinsic-size: 1500px;
+    }
+
+    .page-card::after {
+      position: absolute;
+      inset: 10px;
+      z-index: -1;
+      content: "";
+      border-radius: 24px;
+      background: radial-gradient(circle at 50% 0%, rgba(130, 247, 197, 0.16), transparent 38%);
+    }
+
+    .page-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 14px;
+      padding: 10px 12px;
+      border: 1px solid rgba(157, 205, 255, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.055);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.45;
+    }
+
+    .page-title span:first-child {
+      min-width: 0;
+    }
+
+    .page-title span:last-child {
+      flex: none;
+      border: 1px solid rgba(130, 247, 197, 0.28);
+      border-radius: 999px;
+      padding: 5px 10px;
+      color: var(--accent);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .page-card > img {
+      display: block;
+      width: 100%;
+      max-width: 860px;
+      height: auto;
+      aspect-ratio: 2 / 3;
+      object-fit: contain;
+      margin: 0 auto;
+      border: 8px solid var(--paper);
+      border-radius: 20px;
+      background:
+        linear-gradient(90deg, rgba(255, 253, 244, 0.12), rgba(130, 247, 197, 0.08), rgba(255, 253, 244, 0.12)),
+        linear-gradient(135deg, rgba(255, 253, 244, 0.96), rgba(236, 245, 229, 0.88));
+      background-size: 200% 100%, 100% 100%;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
+      cursor: zoom-in;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .page-card > img:hover,
+    .page-card > img:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.54), 0 0 0 1px rgba(130, 247, 197, 0.38);
+    }
+
+    .global-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(130, 247, 197, 0.18), transparent 24rem),
+        radial-gradient(circle at 80% 88%, rgba(255, 218, 121, 0.14), transparent 23rem),
+        rgba(3, 6, 16, 0.96);
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 220ms ease, visibility 220ms ease;
+    }
+
+    .global-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .global-loader-card {
+      display: grid;
+      justify-items: center;
+      gap: 12px;
+      width: min(340px, 100%);
+      padding: 28px;
+      border: 1px solid rgba(247, 243, 232, 0.14);
+      border-radius: 28px;
+      background: rgba(10, 19, 34, 0.9);
+      box-shadow: 0 28px 86px var(--shadow);
+      color: var(--text);
+      text-align: center;
+      backdrop-filter: blur(18px);
+    }
+
+    .global-loader-card strong {
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .global-loader-card span:last-child {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .global-loader-spinner {
+      width: 42px;
+      height: 42px;
+      border: 4px solid rgba(247, 243, 232, 0.16);
+      border-top-color: var(--accent);
+      border-radius: 999px;
+      animation: loader-spin 900ms linear infinite;
+    }
+
+    @keyframes loader-spin {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .page-card > img,
+      .viewer,
+      .viewer-image,
+      .viewer-nav,
+      .global-loader {
+        transition: none;
+      }
+
+      .global-loader-spinner {
+        animation: none;
+      }
+    }
+
+    footer {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto 36px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      opacity: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(130, 247, 197, 0.16), transparent 24rem),
+        radial-gradient(circle at 80% 88%, rgba(255, 218, 121, 0.12), transparent 23rem),
+        #030610;
+      transition: opacity 160ms ease;
+    }
+
+    .viewer.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .viewer-topbar {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(247, 243, 232, 0.13);
+      background: rgba(3, 6, 16, 0.82);
+      backdrop-filter: blur(20px) saturate(150%);
+    }
+
+    .viewer-title {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .viewer-counter,
+    .viewer-zoom-value {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .viewer-tools {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .viewer-button {
+      padding: 0 12px;
+    }
+
+    .viewer-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      padding: 26px 72px;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    .viewer-stage.is-dragging {
+      cursor: grabbing;
+    }
+
+    .viewer-stage.is-dragging .viewer-image {
+      transition: none;
+    }
+
+    .viewer-image {
+      display: block;
+      width: auto;
+      max-width: min(96vw, 1180px);
+      max-height: calc(100vh - 106px);
+      border: 10px solid var(--paper);
+      border-radius: 20px;
+      background: var(--paper);
+      user-select: none;
+      box-shadow: 0 28px 100px rgba(0, 0, 0, 0.72);
+      transform: translate3d(var(--viewer-x, 0px), var(--viewer-y, 0px), 0) scale(var(--viewer-zoom, 1));
+      transform-origin: center center;
+      transition: transform 130ms ease;
+      -webkit-user-drag: none;
+    }
+
+    .viewer-nav {
+      position: fixed;
+      top: 50%;
+      z-index: 4;
+      width: 48px;
+      height: 74px;
+      border: 1px solid rgba(247, 243, 232, 0.14);
+      border-radius: 999px;
+      background: rgba(3, 6, 16, 0.66);
+      color: var(--text);
+      font-size: 42px;
+      line-height: 1;
+      cursor: pointer;
+      backdrop-filter: blur(18px);
+      transform: translateY(-50%);
+      transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+    }
+
+    .viewer-nav:hover {
+      border-color: rgba(130, 247, 197, 0.7);
+      background: rgba(130, 247, 197, 0.12);
+      color: var(--accent);
+    }
+
+    .viewer-prev {
+      left: 14px;
+    }
+
+    .viewer-next {
+      right: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        padding: 14px 12px;
+      }
+
+      main {
+        padding: 16px 8px 46px;
+      }
+
+      .page-card {
+        padding: 9px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+      }
+
+      .page-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .page-card > img {
+        border-width: 5px;
+        border-radius: 13px;
+      }
+
+      .viewer-topbar {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .viewer-title {
+        flex-basis: 100%;
+      }
+
+      .viewer-stage {
+        padding: 18px 10px 76px;
+      }
+
+      .viewer-image {
+        max-width: 94vw;
+        max-height: calc(100vh - 160px);
+        border-width: 5px;
+        border-radius: 13px;
+      }
+
+      .viewer-nav {
+        top: auto;
+        bottom: 12px;
+        width: 48px;
+        height: 48px;
+        font-size: 34px;
+        transform: none;
+      }
+
+      .viewer-prev {
+        left: calc(50% - 60px);
+      }
+
+      .viewer-next {
+        right: calc(50% - 60px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="global-loader" id="global-loader" role="status" aria-live="polite" aria-label="漫画资源加载状态">
+    <div class="global-loader-card">
+      <span class="global-loader-spinner" aria-hidden="true"></span>
+      <strong>漫画页面加载中</strong>
+      <span>正在加载首屏漫画和页面资源。</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <h1>20260524话《显卡烟囱，AI生图审判》</h1>
+      <p class="subtitle">半抽象群聊漫画：从考试题库、ComfyUI、本地显卡、云端视频到 AI 生图乱码审判的一天群聊小剧场。点击任意漫画可全屏查看，滚轮、按钮或键盘 +/- 可缩放。</p>
+      <nav aria-label="页面导航">
+        <a href="#page-1">第一页</a>
+        <a href="#page-2">第二页</a>
+        <a href="#page-3">第三页</a>
+        <a href="#page-4">第四页</a>
+        <a href="#page-5">第五页</a>
+        <a href="#page-6">第六页</a>
+      </nav>
+      <div class="reader-actions" aria-label="漫画阅读控制">
+        <button class="reader-button primary" id="open-full-reader" type="button">全屏阅读当前页</button>
+        <button class="reader-button" id="open-first-page" type="button">从第一页开始</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="page-1" class="page-card">
+      <h2 class="page-title"><span>第一页《种田开场，应试教育先赢一局》</span><span>1 / 6</span></h2>
+      <img src="20260524话_第一页_种田开场应试教育赢了.png" alt="20260524话 第一页《种田开场，应试教育先赢一局》" loading="eager" fetchpriority="high" width="1024" height="1536" decoding="async" />
+    </section>
+
+    <section id="page-2" class="page-card">
+      <h2 class="page-title"><span>第二页《ComfyUI 登场，3050 抱着自己发抖》</span><span>2 / 6</span></h2>
+      <img src="20260524话_第二页_ComfyUI登场3050发抖.png" alt="20260524话 第二页《ComfyUI 登场，3050 抱着自己发抖》" loading="lazy" fetchpriority="low" width="1024" height="1536" decoding="async" />
+    </section>
+
+    <section id="page-3" class="page-card">
+      <h2 class="page-title"><span>第三页《租卡、虚拟内存与钱包冒烟》</span><span>3 / 6</span></h2>
+      <img src="20260524话_第三页_租卡虚拟内存钱包冒烟.png" alt="20260524话 第三页《租卡、虚拟内存与钱包冒烟》" loading="lazy" fetchpriority="low" width="1024" height="1536" decoding="async" />
+    </section>
+
+    <section id="page-4" class="page-card">
+      <h2 class="page-title"><span>第四页《生图没跑，先聊视频》</span><span>4 / 6</span></h2>
+      <img src="20260524话_第四页_生图没跑先聊视频.png" alt="20260524话 第四页《生图没跑，先聊视频》" loading="lazy" fetchpriority="low" width="1024" height="1536" decoding="async" />
+    </section>
+
+    <section id="page-5" class="page-card">
+      <h2 class="page-title"><span>第五页《谷歌GPT自创汉字审判庭》</span><span>5 / 6</span></h2>
+      <img src="20260524话_第五页_谷歌GPT自创汉字审判庭.png" alt="20260524话 第五页《谷歌GPT自创汉字审判庭》" loading="lazy" fetchpriority="low" width="1024" height="1536" decoding="async" />
+    </section>
+
+    <section id="page-6" class="page-card">
+      <h2 class="page-title"><span>第六页《订阅云雾，Codex挤牙膏》</span><span>6 / 6</span></h2>
+      <img src="20260524话_第六页_订阅云雾Codex挤牙膏.png" alt="20260524话 第六页《订阅云雾，Codex挤牙膏》" loading="lazy" fetchpriority="low" width="1024" height="1536" decoding="async" />
+    </section>
+  </main>
+
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="漫画全屏查看器">
+    <div class="viewer-topbar">
+      <div class="viewer-title" id="viewer-title">漫画查看器</div>
+      <div class="viewer-counter" id="viewer-counter">1 / 6</div>
+      <div class="viewer-tools" aria-label="缩放控制">
+        <button class="viewer-button" type="button" data-zoom-action="out">缩小</button>
+        <span class="viewer-zoom-value" id="viewer-zoom-value">100%</span>
+        <button class="viewer-button" type="button" data-zoom-action="in">放大</button>
+        <button class="viewer-button" type="button" data-zoom-action="reset">重置</button>
+        <button class="viewer-button" id="viewer-close" type="button">关闭</button>
+      </div>
+    </div>
+    <button class="viewer-nav viewer-prev" id="viewer-prev" type="button" aria-label="上一页">‹</button>
+    <div class="viewer-stage" id="viewer-stage">
+      <img class="viewer-image" id="viewer-image" alt="" width="1024" height="1536" decoding="async" />
+    </div>
+    <button class="viewer-nav viewer-next" id="viewer-next" type="button" aria-label="下一页">›</button>
+  </div>
+
+  <footer>
+    生成目录：/Users/zhangjinhui/Desktop/wechat-daily/AI编辑器技术讨论-二群/2026-05-24
+  </footer>
+
+  <script>
+    const cards = Array.from(document.querySelectorAll(".page-card"));
+    const pages = cards.map((card) => {
+      const image = card.querySelector("img");
+      const title = card.querySelector(".page-title span:first-child").textContent;
+      return { image, title, src: image.getAttribute("src"), alt: image.alt };
+    });
+
+    const globalLoader = document.getElementById("global-loader");
+
+    function hideGlobalLoader() {
+      globalLoader.classList.add("is-hidden");
+      window.setTimeout(() => globalLoader.setAttribute("hidden", ""), 240);
+    }
+
+    function afterWindowLoad(callback) {
+      if (document.readyState === "complete") {
+        callback();
+        return;
+      }
+      window.addEventListener("load", callback, { once: true });
+    }
+
+    function waitForFirstImage() {
+      const firstImage = pages[0]?.image;
+      if (!firstImage) return Promise.resolve();
+      if (firstImage.complete) {
+        return firstImage.decode ? firstImage.decode().catch(() => {}) : Promise.resolve();
+      }
+      return new Promise((resolve) => {
+        firstImage.addEventListener("load", resolve, { once: true });
+        firstImage.addEventListener("error", resolve, { once: true });
+      });
+    }
+
+    waitForFirstImage().then(() => afterWindowLoad(hideGlobalLoader));
+
+    const warmedPages = new Set();
+
+    function warmPage(index) {
+      if (index < 0 || index >= pages.length || warmedPages.has(index)) {
+        return;
+      }
+      warmedPages.add(index);
+      const img = new Image();
+      img.decoding = "async";
+      img.src = pages[index].src;
+    }
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(() => warmPage(1), { timeout: 1800 });
+    } else {
+      window.setTimeout(() => warmPage(1), 600);
+    }
+
+    if ("IntersectionObserver" in window) {
+      const warmObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const index = cards.indexOf(entry.target);
+          warmPage(index + 1);
+        });
+      }, { rootMargin: "300px 0px", threshold: 0.01 });
+
+      cards.forEach((card) => warmObserver.observe(card));
+    }
+
+    const viewer = document.getElementById("viewer");
+    const viewerImage = document.getElementById("viewer-image");
+    const viewerTitle = document.getElementById("viewer-title");
+    const viewerCounter = document.getElementById("viewer-counter");
+    const viewerZoomValue = document.getElementById("viewer-zoom-value");
+    const viewerStage = document.getElementById("viewer-stage");
+    const closeButton = document.getElementById("viewer-close");
+    const openFullReaderButton = document.getElementById("open-full-reader");
+    const openFirstPageButton = document.getElementById("open-first-page");
+
+    let currentIndex = 0;
+    let zoom = 1;
+    let offsetX = 0;
+    let offsetY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let dragStartX = 0;
+    let dragStartY = 0;
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+    const isViewerOpen = () => viewer.classList.contains("is-open");
+
+    function applyTransform() {
+      viewerImage.style.setProperty("--viewer-zoom", zoom.toFixed(2));
+      viewerImage.style.setProperty("--viewer-x", `${offsetX}px`);
+      viewerImage.style.setProperty("--viewer-y", `${offsetY}px`);
+      viewerZoomValue.textContent = `${Math.round(zoom * 100)}%`;
+    }
+
+    function resetZoom() {
+      zoom = 1;
+      offsetX = 0;
+      offsetY = 0;
+      applyTransform();
+    }
+
+    function changeZoom(amount) {
+      zoom = clamp(Number((zoom + amount).toFixed(2)), 0.5, 4);
+      if (zoom === 1) {
+        offsetX = 0;
+        offsetY = 0;
+      }
+      applyTransform();
+    }
+
+    function showPage(index) {
+      currentIndex = (index + pages.length) % pages.length;
+      const page = pages[currentIndex];
+      viewerImage.src = page.src;
+      viewerImage.alt = page.alt;
+      viewerTitle.textContent = page.title;
+      viewerCounter.textContent = `${currentIndex + 1} / ${pages.length}`;
+      resetZoom();
+      warmPage(currentIndex - 1);
+      warmPage(currentIndex + 1);
+    }
+
+    function getCurrentPageIndex() {
+      const viewportCenter = window.innerHeight / 2;
+      return cards.reduce((best, card, index) => {
+        const rect = card.getBoundingClientRect();
+        const distance = Math.abs(rect.top + rect.height / 2 - viewportCenter);
+        return distance < best.distance ? { index, distance } : best;
+      }, { index: 0, distance: Infinity }).index;
+    }
+
+    function openViewer(index, useNativeFullscreen = false) {
+      document.body.classList.add("viewer-open");
+      viewer.classList.add("is-open");
+      viewer.setAttribute("aria-hidden", "false");
+      showPage(index);
+      closeButton.focus({ preventScroll: true });
+      if (useNativeFullscreen && viewer.requestFullscreen && !document.fullscreenElement) {
+        viewer.requestFullscreen().catch(() => {});
+      }
+    }
+
+    function closeViewer() {
+      document.body.classList.remove("viewer-open");
+      viewer.classList.remove("is-open");
+      viewer.setAttribute("aria-hidden", "true");
+      if (document.fullscreenElement === viewer) {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    pages.forEach((page, index) => {
+      page.image.tabIndex = 0;
+      page.image.title = "点击全屏查看，滚轮或 +/- 缩放";
+      page.image.addEventListener("click", () => openViewer(index));
+      page.image.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openViewer(index);
+        }
+      });
+    });
+
+    openFullReaderButton.addEventListener("click", () => openViewer(getCurrentPageIndex(), true));
+    openFirstPageButton.addEventListener("click", () => openViewer(0, true));
+    closeButton.addEventListener("click", closeViewer);
+    document.getElementById("viewer-prev").addEventListener("click", () => showPage(currentIndex - 1));
+    document.getElementById("viewer-next").addEventListener("click", () => showPage(currentIndex + 1));
+
+    document.querySelectorAll("[data-zoom-action]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const action = button.dataset.zoomAction;
+        if (action === "in") changeZoom(0.25);
+        if (action === "out") changeZoom(-0.25);
+        if (action === "reset") resetZoom();
+      });
+    });
+
+    viewerStage.addEventListener("wheel", (event) => {
+      if (!isViewerOpen()) return;
+      event.preventDefault();
+      changeZoom(event.deltaY < 0 ? 0.18 : -0.18);
+    }, { passive: false });
+
+    viewerStage.addEventListener("dblclick", () => {
+      if (!isViewerOpen()) return;
+      zoom = zoom > 1 ? 1 : 2;
+      offsetX = 0;
+      offsetY = 0;
+      applyTransform();
+    });
+
+    viewerStage.addEventListener("pointerdown", (event) => {
+      if (zoom <= 1) return;
+      isDragging = true;
+      startX = event.clientX;
+      startY = event.clientY;
+      dragStartX = offsetX;
+      dragStartY = offsetY;
+      viewerStage.classList.add("is-dragging");
+      viewerStage.setPointerCapture(event.pointerId);
+    });
+
+    viewerStage.addEventListener("pointermove", (event) => {
+      if (!isDragging) return;
+      offsetX = dragStartX + event.clientX - startX;
+      offsetY = dragStartY + event.clientY - startY;
+      applyTransform();
+    });
+
+    function stopDragging(event) {
+      if (!isDragging) return;
+      isDragging = false;
+      viewerStage.classList.remove("is-dragging");
+      if (viewerStage.hasPointerCapture(event.pointerId)) {
+        viewerStage.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    viewerStage.addEventListener("pointerup", stopDragging);
+    viewerStage.addEventListener("pointercancel", stopDragging);
+
+    document.addEventListener("keydown", (event) => {
+      if (!isViewerOpen()) return;
+      if (event.key === "Escape") closeViewer();
+      if (event.key === "ArrowLeft") showPage(currentIndex - 1);
+      if (event.key === "ArrowRight") showPage(currentIndex + 1);
+      if (event.key === "+" || event.key === "=") changeZoom(0.25);
+      if (event.key === "-" || event.key === "_") changeZoom(-0.25);
+      if (event.key === "0") resetZoom();
+    });
+  </script>
+</body>
+</html>

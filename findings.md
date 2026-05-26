@@ -5,6 +5,7 @@
 - Target dates: `2026-05-24` and `2026-05-25`.
 - User explicitly requested agent team usage.
 - Project rule requires chat export → script → user confirmation → first page → user confirmation → batch images/index.
+- 本轮恢复后确认：用户已要求继续开始两天漫画生成；当前不再停留在剧本确认阶段。
 
 ## Loaded Project Rules
 - Daily comic folders are grouped as `<群名称>/<YYYY-MM-DD>/`.
@@ -56,4 +57,7 @@
 - 20:31-23:58：Linux.do 邀请/审核、共享账户、涨价和接码失败，作为夜间尾声：申请还没过，验证风暴还在。
 
 ## Pending Discoveries
-- None before script drafting.
+- 2026-05-24 当前已有第 1-3 页 PNG，仍缺第 4-6 页和 `index.html`。
+- 2026-05-25 当前只有聊天记录和剧本，仍缺 13 页 PNG 和 `index.html`。
+- 本地 helper 已增加 `--force-tool-choice`，用于显式要求 Responses 调用 `image_generation` 工具，避免返回无图结果。
+- 用户纠正角色规则：剧本和画面中不能继续显示 `me` 作为人物昵称；`me` 对应角色统一改为 `满洲第一巴图鲁`。`chat me` 是单独昵称，未纳入本次替换。

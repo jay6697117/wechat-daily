@@ -31,8 +31,9 @@
 | 4. Export target chat records | complete | main | Exported both dates with `--limit 5000`; 2026-05-24 has 185 lines and 2026-05-25 has 768 lines. |
 | 5. Draft scripts for both dates | complete | main | Main controller wrote both scripts after script agents failed to produce files. |
 | 6. Validate script files and wait for confirmation | complete | main | Verified script files, page counts, and no real URLs; waiting for user approval before image generation. |
-| 7. Generate first page after script approval | blocked | main | 2026-05-24 first page generated and visually checked; 2026-05-25 generation is blocked by gateway streams closing before image results. |
-| 8. Batch-generate remaining pages and index | blocked | image-generator/main | Only after first page confirmation. |
+| 7. Generate first page after script approval | complete | main | 2026-05-24 first page is present and visually checked in prior progress. User now asked to continue generation for both target dates. |
+| 8. Batch-generate remaining 2026-05-24 pages and index | complete | main | Generated pages 4-6, regenerated pages 4-5 after user corrected `me` to `满洲第一巴图鲁`, and created `index.html`; HTML references all 6 PNGs. |
+| 9. Generate 2026-05-25 pages and index | in_progress | main | Current filesystem has script and chat record only; no PNG or index yet. Previous first-page gateway attempts failed, so retry with explicit image tool choice. |
 
 ## Decisions
 - Because project rules require approval gates, this session will first produce chat records and scripts for both days.
@@ -43,3 +44,4 @@
 | Error | Attempt | Resolution |
 |---|---|---|
 | Planning files temporarily referenced the wrong target group | 1 | User confirmed the correct target is `AI编辑器技术讨论-二群`; planning files were corrected back to that group. |
+| 2026-05-25 gateway stream closed before image result | prior session | Continue with helper using explicit `tool_choice` for `image_generation`; if it fails, record exact error and adjust once. |
