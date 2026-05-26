@@ -100,5 +100,14 @@
 - Every prompt now includes a fixed character bible: 沙雕鱼 is always the grey big-mouth fish and cannot represent any named group member; named members use separate avatar designs and nickname tags.
 - Every page still uses the exact script section as the content source and 2026-05-24 page 4 as visual style reference.
 
+## Final Validation
+- Full overwrite generation task `b3g2srqz7` completed successfully and produced all 14 PNG files.
+- Verified all expected PNG files exist and are non-empty.
+- Spot-checked pages 1, 6, 12, and 14 after the character-bible regeneration.
+- Generated `AI全书学习交流群/2026-05-25/index.html` from the 2026-05-24 HTML style.
+- Static validation confirmed 14 image references and no missing files.
+- Browser validation confirmed `index.html` loads, has 14 page cards, and all 14 page images fetch as `200 image/png`.
+- Added an empty data favicon to eliminate the unrelated `/favicon.ico` 404; final console check had no errors or warnings.
+
 ## Next
-- Wait for `b3g2srqz7` to complete, then audit generated images from page 1 onward before creating `index.html`.
+- None; 2026-05-25 chat record, script, 14 comic images, and `index.html` are complete.
