@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>群聊日更漫画馆</title>
+  <link rel="icon" href="data:," />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4fbf7;
+      --bg-soft: #eff8ff;
+      --card: rgba(255, 255, 255, 0.84);
+      --card-strong: #ffffff;
+      --ink: #17302b;
+      --muted: #64756f;
+      --line: rgba(32, 73, 64, 0.12);
+      --green: #7fc8a9;
+      --green-deep: #2f8d73;
+      --blue: #8ec5ff;
+      --blue-deep: #417fb4;
+      --yellow: #ffe6a3;
+      --shadow: 0 24px 80px rgba(38, 93, 78, 0.14);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(127, 200, 169, 0.35), transparent 34%),
+        radial-gradient(circle at 88% 4%, rgba(142, 197, 255, 0.34), transparent 30%),
+        linear-gradient(135deg, var(--bg), var(--bg-soft) 58%, #fff9e8);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      border-radius: 999px;
+      filter: blur(2px);
+      opacity: 0.66;
+    }
+
+    body::before {
+      width: 340px;
+      height: 340px;
+      left: -130px;
+      bottom: 12vh;
+      background: rgba(255, 230, 163, 0.45);
+    }
+
+    body::after {
+      width: 280px;
+      height: 280px;
+      right: -120px;
+      top: 34vh;
+      background: rgba(127, 200, 169, 0.24);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 44px 0 64px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 48px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.62)),
+        linear-gradient(120deg, rgba(127, 200, 169, 0.2), rgba(142, 197, 255, 0.18));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 46px;
+      top: 38px;
+      width: 164px;
+      height: 164px;
+      border-radius: 44% 56% 52% 48%;
+      background:
+        radial-gradient(circle at 38% 35%, #ffffff 0 7px, transparent 8px),
+        radial-gradient(circle at 62% 35%, #ffffff 0 7px, transparent 8px),
+        linear-gradient(135deg, rgba(127, 200, 169, 0.82), rgba(65, 127, 180, 0.78));
+      opacity: 0.78;
+      transform: rotate(-8deg);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 20px;
+      padding: 8px 14px;
+      border: 1px solid rgba(47, 141, 115, 0.18);
+      border-radius: 999px;
+      color: var(--green-deep);
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+
+    .hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2.2vw, 22px);
+      line-height: 1.76;
+    }
+
+    .stats {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .stat {
+      min-width: 132px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin: 46px 0 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 42px);
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      text-align: right;
+    }
+
+    .group-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .group-card {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      min-height: 228px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      box-shadow: 0 14px 42px rgba(39, 97, 82, 0.1);
+      backdrop-filter: blur(16px);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      cursor: pointer;
+    }
+
+    .group-card:hover,
+    .group-card:focus-visible,
+    .group-card.active {
+      transform: translateY(-4px);
+      border-color: rgba(47, 141, 115, 0.34);
+      box-shadow: 0 24px 58px rgba(39, 97, 82, 0.16);
+      outline: none;
+    }
+
+    .group-card.active::before {
+      content: "当前选中";
+      position: absolute;
+      right: 22px;
+      top: 22px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--green-deep), var(--blue-deep));
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .group-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      font-size: 28px;
+      font-weight: 900;
+      box-shadow: 0 14px 28px rgba(65, 127, 180, 0.18);
+    }
+
+    .group-card h3 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .group-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.64;
+    }
+
+    .group-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--green-deep);
+      background: rgba(127, 200, 169, 0.14);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .library-panel {
+      margin-top: 18px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 18px 54px rgba(39, 97, 82, 0.1);
+      backdrop-filter: blur(18px);
+    }
+
+    .library-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .library-title h2 {
+      margin: 0;
+      font-size: clamp(24px, 4vw, 38px);
+      letter-spacing: -0.04em;
+    }
+
+    .library-title p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .date-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .episode-card {
+      display: grid;
+      grid-template-columns: minmax(132px, 170px) 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--card-strong);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .episode-card:hover,
+    .episode-card:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(65, 127, 180, 0.3);
+      box-shadow: 0 16px 38px rgba(65, 127, 180, 0.12);
+      outline: none;
+    }
+
+    .date-badge {
+      display: grid;
+      gap: 6px;
+      padding: 16px;
+      border-radius: 16px;
+      color: #235f52;
+      background: linear-gradient(135deg, rgba(127, 200, 169, 0.2), rgba(255, 230, 163, 0.28));
+      font-weight: 900;
+    }
+
+    .date-badge span:first-child {
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .date-badge span:last-child {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .episode-main h3 {
+      margin: 0;
+      font-size: clamp(20px, 3vw, 28px);
+      letter-spacing: -0.04em;
+    }
+
+    .episode-main p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    .open-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--green-deep), var(--blue-deep));
+      font-size: 22px;
+      font-weight: 900;
+      transition: transform 160ms ease;
+    }
+
+    .episode-card:hover .open-mark,
+    .episode-card:focus-visible .open-mark {
+      transform: translateX(3px);
+    }
+
+    .empty-state {
+      padding: 28px;
+      border: 1px dashed rgba(47, 141, 115, 0.3);
+      border-radius: var(--radius-md);
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.54);
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 42px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(100% - 24px, 1180px);
+        padding: 18px 0 40px;
+      }
+
+      .hero {
+        padding: 30px 24px;
+      }
+
+      .hero::after {
+        width: 98px;
+        height: 98px;
+        right: 18px;
+        top: 20px;
+        opacity: 0.42;
+      }
+
+      .section-head,
+      .library-title {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 10px;
+        text-align: left;
+      }
+
+      .library-panel {
+        padding: 18px;
+      }
+
+      .episode-card {
+        grid-template-columns: 1fr;
+      }
+
+      .open-mark {
+        width: 100%;
+        border-radius: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div class="eyebrow">群聊日更 · 漫画入口</div>
+      <h1>把每天的群聊，收进一座舒服的漫画馆。</h1>
+      <p>这里按群整理每日聊天记录漫画。先选择群，再进入对应日期的漫画话数；标题来自每个日期目录下的剧本，入口会直达当天漫画页面。</p>
+      <div class="stats" aria-label="内容统计">
+        <div class="stat"><strong id="groupCount">0</strong><span>已收录群</span></div>
+        <div class="stat"><strong id="episodeCount">0</strong><span>漫画话数</span></div>
+        <div class="stat"><strong id="latestDate">-</strong><span>最新日期</span></div>
+      </div>
+    </header>
+
+    <section aria-labelledby="groupsTitle">
+      <div class="section-head">
+        <h2 id="groupsTitle">选择群入口</h2>
+        <p>点击一个群后，下方会显示这个群按 YYYY-MM-DD 日期整理好的漫画入口。</p>
+      </div>
+      <div id="groupGrid" class="group-grid"></div>
+    </section>
+
+    <section id="library" class="library-panel" aria-live="polite">
+      <div class="library-title">
+        <div>
+          <h2 id="activeGroupName">请选择一个群</h2>
+          <p id="activeGroupDesc">群入口会显示在这里。</p>
+        </div>
+        <span id="activeGroupMeta" class="pill">等待选择</span>
+      </div>
+      <div id="dateList" class="date-list">
+        <div class="empty-state">请选择上面的群入口。</div>
+      </div>
+    </section>
+
+    <footer>
+      生成目录：/Users/zhangjinhui/Desktop/wechat-daily<br />
+      首页会跳转到各群对应日期目录下的聊天记录漫画页面。
+    </footer>
+  </div>
+
+  <script>
+    const catalog = [
+      {
+        id: "ai-books-study",
+        name: "AI全书学习交流群",
+        description: "围绕 AI 工具、账号事故、硬盘急诊和群聊吐槽展开的日更漫画。",
+        path: "AI全书学习交流群/",
+        episodes: [
+          {
+            date: "2026-05-25",
+            title: "20260525话《账号拉闸，群聊开庭》",
+            summary: "从 Claude Code 输出爆掉到账号拉闸、验证门、工具跑偏和职场坑洞的一整天群聊小剧场。",
+            href: "AI全书学习交流群/2026-05-25/index.html"
+          },
+          {
+            date: "2026-05-24",
+            title: "20260524话《硬盘一转，群聊开会》",
+            summary: "沙雕鱼的机械硬盘疑似阵亡，群聊瞬间变成远程硬盘急诊，深夜又接上账号陨落。",
+            href: "AI全书学习交流群/2026-05-24/index.html"
+          }
+        ]
+      }
+    ];
+
+    const groupGrid = document.getElementById("groupGrid");
+    const dateList = document.getElementById("dateList");
+    const activeGroupName = document.getElementById("activeGroupName");
+    const activeGroupDesc = document.getElementById("activeGroupDesc");
+    const activeGroupMeta = document.getElementById("activeGroupMeta");
+    const groupCount = document.getElementById("groupCount");
+    const episodeCount = document.getElementById("episodeCount");
+    const latestDate = document.getElementById("latestDate");
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>'"]/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "'": "&#39;",
+        '"': "&quot;"
+      }[char]));
+    }
+
+    function renderStats() {
+      const episodes = catalog.flatMap(group => group.episodes);
+      const latest = episodes.map(episode => episode.date).sort().at(-1) || "-";
+      groupCount.textContent = catalog.length;
+      episodeCount.textContent = episodes.length;
+      latestDate.textContent = latest;
+    }
+
+    function renderGroups(activeId) {
+      groupGrid.innerHTML = catalog.map(group => `
+        <button class="group-card${group.id === activeId ? " active" : ""}" type="button" data-group-id="${escapeHTML(group.id)}">
+          <span class="group-icon" aria-hidden="true">${escapeHTML(group.name.slice(0, 1))}</span>
+          <span>
+            <h3>${escapeHTML(group.name)}</h3>
+            <p>${escapeHTML(group.description)}</p>
+          </span>
+          <span class="group-meta">
+            <span class="pill">${group.episodes.length} 话漫画</span>
+            <span class="pill">${escapeHTML(group.path)}</span>
+          </span>
+        </button>
+      `).join("");
+
+      groupGrid.querySelectorAll(".group-card").forEach(card => {
+        card.addEventListener("click", () => selectGroup(card.dataset.groupId, true));
+      });
+    }
+
+    function renderEpisodes(group) {
+      activeGroupName.textContent = group.name;
+      activeGroupDesc.textContent = group.description;
+      activeGroupMeta.textContent = `${group.episodes.length} 话 · 按日期倒序`;
+
+      if (group.episodes.length === 0) {
+        dateList.innerHTML = "<div class=\"empty-state\">这个群还没有可打开的漫画页面。</div>";
+        return;
+      }
+
+      dateList.innerHTML = group.episodes.map(episode => `
+        <a class="episode-card" href="${escapeHTML(episode.href)}">
+          <span class="date-badge">
+            <span>${escapeHTML(episode.date)}</span>
+            <span>YYYY-MM-DD</span>
+          </span>
+          <span class="episode-main">
+            <h3>${escapeHTML(episode.title)}</h3>
+            <p>${escapeHTML(episode.summary)}</p>
+          </span>
+          <span class="open-mark" aria-hidden="true">›</span>
+        </a>
+      `).join("");
+    }
+
+    function selectGroup(id, shouldScroll) {
+      const group = catalog.find(item => item.id === id) || catalog[0];
+      if (!group) return;
+      history.replaceState(null, "", `#${group.id}`);
+      renderGroups(group.id);
+      renderEpisodes(group);
+      if (shouldScroll) {
+        document.getElementById("library").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    renderStats();
+    selectGroup(location.hash.replace("#", "") || catalog[0]?.id, false);
+  </script>
+</body>
+</html>
