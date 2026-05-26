@@ -73,5 +73,21 @@
 - Regenerated page 1 using 2026-05-24 page 4 as style reference; visual check showed the bubble/nickname/group-chat style is much closer.
 - Started background task `bxzafpkiz` to regenerate pages 2-14 using actual panel counts: pages 3/12/13/14 have 4 panels, the others have 3.
 
+## Script-Accuracy Correction
+- User reported page 1 image did not follow the script.
+- Stopped background task `bxzafpkiz`.
+- Re-read page 1 script and regenerated page 1 strictly from the three script panels: 凌封四个号一周伏笔, 抽奖贴被临时隐藏, Claude Code output maximum warning.
+- Visual check found the first regenerated result had a title typo (`202605255话`), so it was edited to `20260525话` while preserving the page.
+- Current page 1 file has been overwritten at `AI全书学习交流群/2026-05-25/20260525话_第一页_凌晨伏笔Claude先爆.png`.
+
+## Continue Script-Accurate Generation
+- User confirmed the corrected page 1 and requested continuing pages 2-14 with the same standard.
+- Started background task `bgw4aho66` to regenerate pages 2-14.
+- The batch reads each page's exact script section, uses the script as the content source, and uses 2026-05-24 page 4 only as visual style reference for speech bubbles, nickname tags, group avatars, and panel framing.
+
+## Continue After Generation Failure
+- Background task `bgw4aho66` generated pages 2-6 successfully, then failed on page 7 due to repeated DNS resolution errors.
+- Started resume task `b5jku7ido` from page 7 through page 14 using the same script-accurate prompt pattern and host-network execution.
+
 ## Next
-- Wait for background image generation `bxzafpkiz` to complete, then create `AI全书学习交流群/2026-05-25/index.html` and validate outputs.
+- Wait for `b5jku7ido` to complete, then spot-check generated pages, create `index.html`, and validate outputs.
