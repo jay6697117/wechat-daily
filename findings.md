@@ -61,3 +61,4 @@
 - 2026-05-25 当前只有聊天记录和剧本，仍缺 13 页 PNG 和 `index.html`。
 - 本地 helper 已增加 `--force-tool-choice`，用于显式要求 Responses 调用 `image_generation` 工具，避免返回无图结果。
 - 用户纠正角色规则：剧本和画面中不能继续显示 `me` 作为人物昵称；`me` 对应角色统一改为 `满洲第一巴图鲁`。`chat me` 是单独昵称，未纳入本次替换。
+- 用户更新生图策略：从 2026-05-25 第 7 页开始，优先使用项目内 `.codex/skills/codex-gateway-imagegen`；如果该 skill 失败，直接切到 `$imagegen` 内置图像工具。

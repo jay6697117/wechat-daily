@@ -22,6 +22,8 @@
 - 2026-05-25 第 2 页首次生成遇到 gateway `502` 空响应；按临时网关错误处理，从第 2 页继续重试，已成功页会跳过。
 - 用户要求继续。2026-05-25 第 3 页自动批量流程连续失败三次：一次无 `image_generation_call` result，两次 SSL EOF。
 - 改用单页短提示词、只引用上一页图片，成功生成 `20260525话_第三页_PlusTeam和401幽灵会诊.png`，尺寸 1024x1536，文件大小 2502829 bytes。
+- 用户更新第 7 页后的生成策略：优先使用项目内 `.codex/skills/codex-gateway-imagegen`，失败时切到 `$imagegen`。
+- 检查确认 `.codex` 版 helper 缺少 `--force-tool-choice`；已补齐该参数以保持与前面稳定出图路径一致。
 
 ## Agent Team
 - Created team `wechat-editor-comics-20260524-25`.
