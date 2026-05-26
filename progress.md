@@ -18,6 +18,12 @@
 - Sent follow-up messages requiring each script writer to either create the missing script file or report why it cannot.
 - Both script writers went idle again without creating files, so main controller took over Task #2 and Task #4.
 
+## Script Drafts Completed
+- Created `AI编辑器技术讨论-二群/2026-05-24/20260524话_显卡烟囱AI生图审判_剧本.md` with 6 page sections and 221 lines.
+- Created `AI编辑器技术讨论-二群/2026-05-25/20260525话_验证门号商早餐钱_剧本.md` with 13 page sections and 437 lines.
+- Validated no real `http://` or `https://` URL appears in either script.
+- Sensitive account, verification, token, node, registration, platform, invite, and price details were abstracted into comic props.
+
 ## Next
 - Reference workflow analysis task completed and summary received.
 - Key reference rules recorded in `findings.md`: naming, script structure, 1024x1536 visual grammar, PNG naming, index update pattern, and validation checklist.
