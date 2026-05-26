@@ -89,5 +89,16 @@
 - Background task `bgw4aho66` generated pages 2-6 successfully, then failed on page 7 due to repeated DNS resolution errors.
 - Started resume task `b5jku7ido` from page 7 through page 14 using the same script-accurate prompt pattern and host-network execution.
 
+## Character Consistency Correction
+- User reported role/character inconsistency across generated comic pages; example: page 6 confused the fish character with other named roles.
+- Stopped generation task `b5jku7ido`.
+- New generation requirement: from page 1 onward, every prompt must include a fixed character bible. `沙雕鱼` is always the grey big-mouth fish and must not represent 张小灰/Sailor/other group members.
+- Need regenerate all pages with script-accurate content, 2026-05-24 visual style, and fixed role labels.
+
+## Regenerate With Character Bible
+- Started full overwrite generation task `b3g2srqz7` for pages 1-14.
+- Every prompt now includes a fixed character bible: 沙雕鱼 is always the grey big-mouth fish and cannot represent any named group member; named members use separate avatar designs and nickname tags.
+- Every page still uses the exact script section as the content source and 2026-05-24 page 4 as visual style reference.
+
 ## Next
-- Wait for `b5jku7ido` to complete, then spot-check generated pages, create `index.html`, and validate outputs.
+- Wait for `b3g2srqz7` to complete, then audit generated images from page 1 onward before creating `index.html`.
