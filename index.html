@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>群聊日更漫画馆</title>
   <link rel="icon" href="data:," />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
@@ -31,7 +28,7 @@
       --radius-lg: 14px;
       --radius-md: 10px;
 
-      font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     }
 
     * {
@@ -860,7 +857,7 @@
     <footer>
       <div class="footer-left">
         <span class="status-dot"></span>
-        <span>运行环境：/Users/zhangjinhui/Desktop/wechat-daily</span>
+        <span>线上漫画馆：按群组与日期浏览</span>
       </div>
       <div class="footer-right">
         <span>© WeChat Daily Comic Gallery</span>
@@ -939,26 +936,13 @@
       }[char]));
     }
 
-    let catalogReady = false;
-    let pageLoaded = document.readyState === "complete";
 
     function hideGlobalLoader() {
+      if (globalLoader.hasAttribute("hidden")) return;
       globalLoader.classList.add("is-hidden");
       window.setTimeout(() => globalLoader.setAttribute("hidden", ""), 400);
     }
 
-    function updateGlobalLoader() {
-      if (catalogReady && pageLoaded) {
-        hideGlobalLoader();
-      }
-    }
-
-    if (!pageLoaded) {
-      window.addEventListener("load", () => {
-        pageLoaded = true;
-        updateGlobalLoader();
-      }, { once: true });
-    }
 
     function setCatalogBusy(isBusy) {
       groupGrid.setAttribute("aria-busy", String(isBusy));
@@ -966,15 +950,6 @@
       library.setAttribute("aria-busy", String(isBusy));
     }
 
-    function scheduleInitialRender(callback) {
-      window.requestAnimationFrame(() => {
-        if ("requestIdleCallback" in window) {
-          window.requestIdleCallback(callback, { timeout: 900 });
-        } else {
-          window.setTimeout(callback, 80);
-        }
-      });
-    }
 
     function renderStats() {
       const episodes = catalog.flatMap(group => group.episodes);
@@ -1045,12 +1020,9 @@
     }
 
     renderStats();
-    scheduleInitialRender(() => {
-      selectGroup(location.hash.replace("#", "") || catalog[0]?.id, false);
-      setCatalogBusy(false);
-      catalogReady = true;
-      updateGlobalLoader();
-    });
+    selectGroup(location.hash.replace("#", "") || catalog[0]?.id, false);
+    setCatalogBusy(false);
+    hideGlobalLoader();
   </script>
 </body>
 </html>

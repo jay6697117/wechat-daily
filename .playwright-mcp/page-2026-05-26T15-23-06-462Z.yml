@@ -1,0 +1,58 @@
+- generic [active] [ref=e1]:
+  - status "页面资源加载状态":
+    - generic: 群聊日更漫画馆
+    - generic: 正在整理首页入口和关键资源
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]: ✨ 群聊日更 · 漫画馆门户
+      - heading "把每天的群聊，收进一座舒服的漫画馆。" [level=1] [ref=e5]
+      - paragraph [ref=e6]: 这里按群整理每日聊天记录漫画。先选择左侧微信群，右侧即刻渲染对应日期的漫画话数。轻点卡片直达精美漫画舞台。
+      - generic "内容统计" [ref=e7]:
+        - generic [ref=e8]:
+          - strong [ref=e9]: "2"
+          - generic [ref=e10]: 已收录群
+        - generic [ref=e11]:
+          - strong [ref=e12]: "4"
+          - generic [ref=e13]: 漫画总话数
+        - generic [ref=e14]:
+          - strong [ref=e15]: 2026-05-25
+          - generic [ref=e16]: 最新更新
+    - main [ref=e17]:
+      - region "选择群入口" [ref=e18]:
+        - generic [ref=e19]:
+          - heading "选择群入口" [level=2] [ref=e20]
+          - paragraph [ref=e21]: 点击下方群磁贴，切换漫画话数目录
+        - generic [ref=e22]:
+          - button "AI全书学习交流群 围绕 AI 工具、账号事故、硬盘急诊和群聊吐槽展开的日更漫画。 2 话漫画" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]: 📘
+            - generic [ref=e25]:
+              - heading "AI全书学习交流群" [level=3] [ref=e26]
+              - paragraph [ref=e27]: 围绕 AI 工具、账号事故、硬盘急诊和群聊吐槽展开的日更漫画。
+              - generic [ref=e29]: 2 话漫画
+          - button "AI编辑器技术讨论-二群 围绕 AI 编辑器、ComfyUI、生图工具、显卡焦虑和云端订阅展开的技术群聊漫画。 2 话漫画" [ref=e30] [cursor=pointer]:
+            - generic [ref=e31]: 💻
+            - generic [ref=e32]:
+              - heading "AI编辑器技术讨论-二群" [level=3] [ref=e33]
+              - paragraph [ref=e34]: 围绕 AI 编辑器、ComfyUI、生图工具、显卡焦虑和云端订阅展开的技术群聊漫画。
+              - generic [ref=e36]: 2 话漫画
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e40]: 2 话 · 按日期倒序
+          - heading "AI全书学习交流群" [level=2] [ref=e41]
+          - paragraph [ref=e42]: 围绕 AI 工具、账号事故、硬盘急诊和群聊吐槽展开的日更漫画。
+        - generic [ref=e43]:
+          - link "20260525话《账号拉闸，群聊开庭》 从 Claude Code 输出爆掉到账号拉闸、验证门、工具跑偏 and 职场坑洞的一整天群聊小剧场。" [ref=e44] [cursor=pointer]:
+            - /url: AI全书学习交流群/2026-05-25/index.html
+            - generic [ref=e45]:
+              - heading "20260525话《账号拉闸，群聊开庭》" [level=3] [ref=e46]
+              - paragraph [ref=e47]: 从 Claude Code 输出爆掉到账号拉闸、验证门、工具跑偏 and 职场坑洞的一整天群聊小剧场。
+            - generic [ref=e48]: →
+          - link "20260524话《硬盘一转，群聊开会》 沙雕鱼的机械硬盘疑似阵亡，群聊瞬间变成远程硬盘急诊，深夜又接上账号陨落。" [ref=e49] [cursor=pointer]:
+            - /url: AI全书学习交流群/2026-05-24/index.html
+            - generic [ref=e50]:
+              - heading "20260524话《硬盘一转，群聊开会》" [level=3] [ref=e51]
+              - paragraph [ref=e52]: 沙雕鱼的机械硬盘疑似阵亡，群聊瞬间变成远程硬盘急诊，深夜又接上账号陨落。
+            - generic [ref=e53]: →
+    - contentinfo [ref=e54]:
+      - generic [ref=e57]: 线上漫画馆：按群组与日期浏览
+      - generic [ref=e58]: © WeChat Daily Comic Gallery
