@@ -219,6 +219,87 @@
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(118, 240, 164, 0.38);
     }
 
+    .global-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(118, 240, 164, 0.18), transparent 24rem),
+        radial-gradient(circle at 80% 88%, rgba(255, 218, 121, 0.14), transparent 23rem),
+        rgba(2, 3, 3, 0.96);
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 220ms ease, visibility 220ms ease;
+    }
+
+    .global-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .global-loader-card {
+      display: grid;
+      justify-items: center;
+      gap: 12px;
+      width: min(340px, 100%);
+      padding: 28px;
+      border: 1px solid rgba(247, 243, 232, 0.14);
+      border-radius: 28px;
+      background: rgba(17, 20, 18, 0.86);
+      box-shadow: 0 28px 86px var(--shadow);
+      color: var(--text);
+      text-align: center;
+      backdrop-filter: blur(18px);
+    }
+
+    .global-loader-card strong {
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .global-loader-card span:last-child {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .global-loader-spinner {
+      width: 42px;
+      height: 42px;
+      border: 4px solid rgba(247, 243, 232, 0.16);
+      border-top-color: var(--accent);
+      border-radius: 999px;
+      animation: loader-spin 900ms linear infinite;
+    }
+
+    @keyframes loader-spin {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .page-card > img,
+      .viewer,
+      .viewer-image,
+      .viewer-nav,
+      .global-loader {
+        transition: none;
+      }
+
+      .global-loader-spinner {
+        animation: none;
+      }
+    }
+
     footer {
       max-width: 1120px;
       margin: 0 auto;
@@ -423,6 +504,14 @@
   </style>
 </head>
 <body>
+  <div class="global-loader" id="global-loader" role="status" aria-live="polite" aria-label="漫画资源加载状态">
+    <div class="global-loader-card">
+      <span class="global-loader-spinner" aria-hidden="true"></span>
+      <strong>漫画页面加载中</strong>
+      <span>正在加载首屏漫画和页面资源。</span>
+    </div>
+  </div>
+
   <header>
     <div class="header-inner">
       <h1>20260525话《账号拉闸，群聊开庭》</h1>
@@ -552,6 +641,35 @@
       const title = card.querySelector(".page-title span:first-child").textContent;
       return { image, title, src: image.getAttribute("src"), alt: image.alt };
     });
+
+    const globalLoader = document.getElementById("global-loader");
+
+    function hideGlobalLoader() {
+      globalLoader.classList.add("is-hidden");
+      window.setTimeout(() => globalLoader.setAttribute("hidden", ""), 240);
+    }
+
+    function afterWindowLoad(callback) {
+      if (document.readyState === "complete") {
+        callback();
+        return;
+      }
+      window.addEventListener("load", callback, { once: true });
+    }
+
+    function waitForFirstImage() {
+      const firstImage = pages[0]?.image;
+      if (!firstImage) return Promise.resolve();
+      if (firstImage.complete) {
+        return firstImage.decode ? firstImage.decode().catch(() => {}) : Promise.resolve();
+      }
+      return new Promise((resolve) => {
+        firstImage.addEventListener("load", resolve, { once: true });
+        firstImage.addEventListener("error", resolve, { once: true });
+      });
+    }
+
+    waitForFirstImage().then(() => afterWindowLoad(hideGlobalLoader));
 
     const warmedPages = new Set();
 
