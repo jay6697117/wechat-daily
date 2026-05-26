@@ -31,7 +31,7 @@
 | 4. Export target chat records | complete | main | Exported both dates with `--limit 5000`; 2026-05-24 has 185 lines and 2026-05-25 has 768 lines. |
 | 5. Draft scripts for both dates | complete | main | Main controller wrote both scripts after script agents failed to produce files. |
 | 6. Validate script files and wait for confirmation | complete | main | Verified script files, page counts, and no real URLs; waiting for user approval before image generation. |
-| 7. Generate first page after script approval | blocked | image-generator | Only start after user confirms scripts. |
+| 7. Generate first page after script approval | blocked | main | 2026-05-24 first page generated and visually checked; 2026-05-25 generation is blocked by gateway streams closing before image results. |
 | 8. Batch-generate remaining pages and index | blocked | image-generator/main | Only after first page confirmation. |
 
 ## Decisions
