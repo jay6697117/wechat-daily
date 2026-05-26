@@ -871,6 +871,9 @@
     }
 
     function closeViewer() {
+      if (viewer.contains(document.activeElement)) {
+        pages[currentIndex]?.image.focus({ preventScroll: true });
+      }
       document.body.classList.remove("viewer-open");
       viewer.classList.remove("is-open");
       viewer.setAttribute("aria-hidden", "true");
