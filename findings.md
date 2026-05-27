@@ -11,6 +11,8 @@
 - Visual contact-sheet review confirms 2026-05-26 pages 7-10 currently look like dark UI/chat-card placeholders rather than finished comic pages, matching their small file sizes.
 - Existing `index.html` references stable 2026-05-26 filenames, so keeping filenames unchanged avoids HTML edits unless validation finds broken refs.
 - Safe replacement strategy: generate to temporary output first, validate dimensions, then replace the stable PNG and regenerate WebP derivatives.
+- Current regeneration rule after user correction: all image titles should follow the 2026-05-25 format `20260526话 第X页《标题》`; do not use `第1页:` or omit the Chinese book-title marks.
+- Final validation after regeneration: 10 PNG files exist, all are `1024x1536`, every PNG has full/768w/512w WebP derivatives, and `index.html` has 40 image refs with no missing files.
 
 ## Current Task
 - Target group: `AI编辑器技术讨论-二群`.

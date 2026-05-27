@@ -21,11 +21,11 @@
 | Phase | Status | Notes |
 |---|---|---|
 | 1. Restore context and read rules | complete | Read skill docs, existing planning files, session catchup, target/reference directories. |
-| 2. Inspect script, references, and current assets | in_progress | Need extract all 10 page scripts and inspect visual reference/current image quality. |
-| 3. Build per-page prompts | pending | Use page script text plus shared style constraints from 2026-05-25. |
-| 4. Regenerate PNG pages | pending | Gateway first, fallback `$imagegen` on failure. Replace only after successful output. |
-| 5. Regenerate WebP derivatives | pending | Refresh full, 768w, and 512w WebP for every replaced PNG. |
-| 6. Validate outputs and report | pending | Check dimensions, file refs in index, git diff, and final paths. |
+| 2. Inspect script, references, and current assets | complete | Extracted all 10 page titles, checked 2026-05-25 reference style, and identified old 2026-05-26 pages 7-10 as UI-placeholder-like assets. |
+| 3. Build per-page prompts | complete | Used page-specific script beats and enforced `20260526话 第X页《标题》` title format. |
+| 4. Regenerate PNG pages | complete | Gateway failed with Broken pipe, so all requested pages were regenerated through `$imagegen` built-in mode per user instruction. |
+| 5. Regenerate WebP derivatives | complete | Refreshed full, 768w, and 512w WebP derivatives for each copied PNG. |
+| 6. Validate outputs and report | in_progress | Dimensions and HTML image refs passed; final status summary pending. |
 
 ## Decisions
 - Treat “重新生图” as permission to replace the existing 2026-05-26 comic image assets after each replacement candidate is successfully generated and validated.
@@ -36,3 +36,5 @@
 | Error | Attempt | Resolution |
 |---|---|---|
 | Previous session catchup reported gateway connection resets/no image result | prior session | Continue with `.codex` skill first per user request; on live failure, switch to `$imagegen` instead of repeatedly changing the prompt. |
+| `.codex` gateway returned `Broken pipe` on current page 1 test | current session | Switched to `$imagegen` built-in generation as explicitly requested by user. |
+| First regenerated page title used the wrong `第1页:` style | current session | User requested full regeneration, not title-only patch; regenerated page 1 from scratch with `$imagegen` and enforced `第一页《...》` format. |

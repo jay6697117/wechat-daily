@@ -19,6 +19,11 @@
 - `$imagegen` regenerated pages 2 and 3 with 2026-05-25-style book-title title bars; copied both stable PNGs into `AI全书学习交流群/2026-05-26/` and refreshed their WebP derivatives.
 - `$imagegen` regenerated pages 4 and 5 with book-title title bars; copied both stable PNGs and refreshed WebP derivatives.
 - `$imagegen` regenerated pages 6 and 7 with book-title title bars; page 7 is now a finished illustrated comic rather than the previous small UI-placeholder-style asset. Copied stable PNGs and refreshed WebP derivatives.
+- `$imagegen` regenerated page 8 as a finished illustrated comic page rather than the previous HTML/UI-placeholder-style asset. Copied stable PNG and refreshed WebP derivatives.
+- `$imagegen` regenerated page 9 as a finished illustrated comic page rather than the previous placeholder-style asset. Copied stable PNG and refreshed WebP derivatives.
+- `$imagegen` regenerated page 10 as a finished illustrated comic page. Copied stable PNG and refreshed WebP derivatives.
+- Validation completed: 10 target PNGs exist and are all `1024x1536`; every PNG has `.webp`, `-768w.webp`, and `-512w.webp`; `index.html` has 40 image references and no missing image files.
+- Created and viewed a final contact sheet during validation; all pages now use the finished three-panel comic style with book-title title bars, and pages 7-10 no longer appear as small UI placeholders. Removed the temporary contact sheet afterward.
 
 ## 2026-05-26
 - Started task for `AI编辑器技术讨论-二群` dates `2026-05-24` and `2026-05-25`.
