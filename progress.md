@@ -16,6 +16,24 @@
 - Added three script files for 2026-05-25, 2026-05-26, and 2026-05-27.
 - Removed inherited fixed-role wording from the three scripts; verified no `沙雕鱼`, fish-role, or mascot wording remains in `人类高质量前端框架群/`.
 - One `rg` command for final image filename extraction failed due to shell backtick quoting; will rerun with safe quoting.
+- Created contact sheets for all requested reference comic images:
+  - `tmp/reference_ai_books_20260525_contact_sheet.jpg` with all 14 PNG pages from `AI全书学习交流群/2026-05-25/`.
+  - `tmp/reference_ai_books_20260526_contact_sheet.jpg` with all 10 PNG pages from `AI全书学习交流群/2026-05-26/`.
+- Inspected the two contact sheets and then inspected every original reference PNG page individually: 14 pages from 2026-05-25 and 10 pages from 2026-05-26. The new image prompts will use these only as style references and will explicitly avoid inherited fixed characters or fish mascots.
+- Generated and copied all 6 PNG pages for `人类高质量前端框架群/2026-05-25/`; each copied file reports `1024 x 1536` via `file`.
+- During 2026-05-26 generation, copied the newest generated image too early and temporarily put page 5 content into the page 4 filename. Corrected it by inspecting the two latest generated images and recopying the page 4 and page 5 source PNGs into their correct stable filenames.
+- Regenerated 2026-05-26 page 6 once because the first attempt mixed in page 5 token-compression elements; the corrected page 6 was copied to the stable filename and validated as `1024 x 1536`.
+- Generated and copied all 7 PNG pages for `人类高质量前端框架群/2026-05-26/`; all copied files report `1024 x 1536`. Some generated title/footer text will be normalized in a post-processing pass because the image model occasionally reused neighboring page footer text.
+- 2026-05-27 page 2 first generation attempt returned a server error; retried with a shorter prompt and successfully copied the PNG to the stable filename.
+- Generated and copied all 6 PNG pages for `人类高质量前端框架群/2026-05-27/`; all copied files report `1024 x 1536`.
+- Ran a local Pillow post-processing pass over all 19 PNGs to normalize the top title strip and bottom punchline strip to exact script text, then generated `.webp`, `-768w.webp`, and `-512w.webp` derivatives for every page.
+- The first title/footer normalization used decorative star glyphs that rendered as square boxes in the local CJK font during contact-sheet review. Re-ran normalization without decorative glyphs and regenerated all WebP derivatives.
+- Created `tmp/hq_frontend_group_contact_sheet.jpg` for the 19 generated pages and visually reviewed it for overall style, target group label, page count, and footer/title readability.
+- Created date pages:
+  - `人类高质量前端框架群/2026-05-25/index.html`
+  - `人类高质量前端框架群/2026-05-26/index.html`
+  - `人类高质量前端框架群/2026-05-27/index.html`
+- Updated root `index.html` with a new `人类高质量前端框架群` catalog group and three episode links.
 
 ## 2026-05-27 - Generate Codex AGENTS.md
 - Started task to generate project-level `AGENTS.md` from `CLAUDE.md`.

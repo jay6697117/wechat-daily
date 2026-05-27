@@ -13,6 +13,7 @@
 - Safety abstractions needed for this group: API keys, token bills, model platforms, KYC, VPN/nodes, payments, WeChat automation/export tools, third-party plugins, stock gains, work-injury jokes, and image/XML payloads must be rendered only as abstract props.
 - Relevant memory confirmed imagegen prompt practice: preserve detailed user constraints and copy final generated image assets into the project workspace rather than leaving them under generated image defaults.
 - User correction: this group has no `沙雕鱼` character. Scripts and image prompts must not include `沙雕鱼`, fish mascots, or inherited fixed characters from `AI全书学习交流群`; characters should be derived from the daily script and original nicknames only.
+- Full visual reference pass completed for all requested style references: 14 PNG pages in `AI全书学习交流群/2026-05-25/` and 10 PNG pages in `AI全书学习交流群/2026-05-26/` were inspected, plus contact sheets under `tmp/`. These references are style-only: layout, title/footer strips, panel density, deep blue group-chat stage, thick black borders, white speech bubbles, colored nickname tags, and comic pacing. They must not donate fixed characters or fish mascots to the new group.
 - Final script files:
   - `人类高质量前端框架群/2026-05-25/20260525话_API钥匙与十连Agent_剧本.md`
   - `人类高质量前端框架群/2026-05-26/20260526话_上下文瘦身与漫画馆出道_剧本.md`
