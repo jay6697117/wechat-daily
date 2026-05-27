@@ -14,6 +14,10 @@
 - Created and viewed contact sheets under `tmp/`; confirmed 2026-05-25 pages are the intended finished comic style, while 2026-05-26 pages 7-10 are UI-like placeholder pages rather than finished comic pages.
 - Gateway test for 2026-05-26 page 1 using `.codex/skills/codex-gateway-imagegen/scripts/generate_gateway_image.py` failed with `network_error` / `Broken pipe`; per user instruction, switching to `$imagegen` fallback.
 - `$imagegen` generated a finished comic-style replacement for page 1. Copied it to `AI全书学习交流群/2026-05-26/20260526话_第一页_中转用太快GPT慢成树懒.png` and refreshed its `.webp`, `-768w.webp`, and `-512w.webp` derivatives.
+- User rejected the title-only correction approach and requested regenerating page 1 with `$imagegen`, then continuing later pages. Checked that no gateway/imagegen helper process is still running.
+- Regenerated page 1 from scratch with `$imagegen`; the new title uses the 2026-05-25 format with book-title marks: `20260526话 第一页《中转用太快，GPT慢成树懒》`. Copied it to the stable page 1 PNG and refreshed its WebP derivatives.
+- `$imagegen` regenerated pages 2 and 3 with 2026-05-25-style book-title title bars; copied both stable PNGs into `AI全书学习交流群/2026-05-26/` and refreshed their WebP derivatives.
+- `$imagegen` regenerated pages 4 and 5 with book-title title bars; copied both stable PNGs and refreshed WebP derivatives.
 
 ## 2026-05-26
 - Started task for `AI编辑器技术讨论-二群` dates `2026-05-24` and `2026-05-25`.
