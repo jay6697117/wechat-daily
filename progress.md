@@ -1,5 +1,27 @@
 # Progress
 
+## 2026-05-28 - 人类高质量前端框架群 style comparison and optimization
+- Started continuation goal: compare `AI全书学习交流群/` and `人类高质量前端框架群/` comic image styles, then optimize the target group.
+- Refreshed `AGENTS.md`, `task_plan.md`, `findings.md`, and `progress.md`.
+- Inventoried current PNG files:
+  - `AI全书学习交流群/`: 29 PNG pages across 2026-05-24, 2026-05-25, and 2026-05-26.
+  - `人类高质量前端框架群/`: 19 PNG pages across 2026-05-25, 2026-05-26, and 2026-05-27.
+  - All PNG files in both roots are `1024x1536`.
+- Generated full comparison contact sheets:
+  - `tmp/style_compare_ai_books_all.jpg`
+  - `tmp/style_compare_hq_frontend_all.jpg`
+- Visual comparison finding: target images already match the deep-blue group-chat stage, rough panel grammar, speech bubbles, and nickname tags; the most consistent mismatch is the target title/footer layer being too clean and missing the reference-style gold star markers.
+- Applied deterministic style optimization to all 19 target PNGs: reference-style white title strip, white footer strip, black borders, outer page frame, and vector gold star markers in the footer.
+- Regenerated all target `.webp`, `-768w.webp`, and `-512w.webp` derivatives after the PNG optimization.
+- Generated optimized contact sheet `tmp/style_compare_hq_frontend_after_bar_fix.jpg` and visually reviewed it against the reference contact sheet.
+- Added `tmp/hq_frontend_style_compare_notes.md` to document comparison scope, differences, and optimization decisions; kept this note outside the target comic directory so forbidden-role text checks stay focused and clean.
+- Final validation passed after optimization:
+  - 19 target PNG files exist and all remain `1024x1536`.
+  - 57 target WebP derivatives exist.
+  - Three target date pages have no missing image references.
+  - `rg` found no `沙雕鱼`, `鱼形`, `吉祥物`, or `AI全书学习交流群` text inside `人类高质量前端框架群/`.
+  - `tmp/style_compare_hq_frontend_after_bar_fix.jpg` exists and was visually checked against `tmp/style_compare_ai_books_all.jpg`.
+
 ## 2026-05-27 - 人类高质量前端框架群 three-day comic implementation
 - Started implementation after the approved plan.
 - Read `planning-with-files` instructions and refreshed current worktree state.

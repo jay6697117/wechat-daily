@@ -1,6 +1,14 @@
 # Findings
 
 ## Current Task - 人类高质量前端框架群 2026-05-25 to 2026-05-27
+- Current style comparison task:
+  - `AI全书学习交流群/` currently has 29 PNG comic pages across 2026-05-24, 2026-05-25, and 2026-05-26; all are `1024x1536`.
+  - `人类高质量前端框架群/` currently has 19 PNG comic pages across 2026-05-25, 2026-05-26, and 2026-05-27; all are `1024x1536`.
+  - Full comparison contact sheets were generated at `tmp/style_compare_ai_books_all.jpg`, `tmp/style_compare_hq_frontend_all.jpg`, and the optimized `tmp/style_compare_hq_frontend_after_bar_fix.jpg`.
+  - Visual comparison showed the target group already matches the deep-blue group-chat stage, thick panel borders, speech bubbles, and colored nickname tags, but its title/footer strips were cleaner and less like the reference comic pages.
+  - Optimization applied: repaint target PNG title/footer/page-frame layer with reference-style white strips, black borders, and vector gold star markers; regenerate all WebP derivatives.
+  - A style comparison note was added at `tmp/hq_frontend_style_compare_notes.md`.
+
 - Target group root `人类高质量前端框架群/` did not exist before implementation.
 - Source chat record line counts are 121, 344, and 125 lines for 2026-05-25, 2026-05-26, and 2026-05-27.
 - Reference scripts use a structure of basic info, style principles, fixed characters, one-sentence story, page-by-page script, final image filenames, HTML path, and safety notes.

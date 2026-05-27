@@ -1,18 +1,14 @@
 # Task Plan
 
 ## Goal
-为 `人类高质量前端框架群` 生成 2026-05-25、2026-05-26、2026-05-27 三天的日更漫画产物：日期目录、聊天记录副本、剧本 Markdown、漫画 PNG/WebP、日期页 `index.html`，并接入根目录 `index.html`。
+对比 `AI全书学习交流群/` 与 `人类高质量前端框架群/` 两个目录下的漫画图风格差异，并优化 `人类高质量前端框架群/`，使其更贴近 `AI全书学习交流群/` 的漫画页风格。
 
 ## Scope
-- Source chat records:
-  - `2026-05-25_人类高质量前端框架群_聊天记录.txt`
-  - `2026-05-26_人类高质量前端框架群_聊天记录.txt`
-  - `2026-05-27_人类高质量前端框架群_聊天记录.txt`
+- Reference root: `AI全书学习交流群/`
 - Target root: `人类高质量前端框架群/`
-- Reference style:
-  - `AI全书学习交流群/2026-05-25/`
-  - `AI全书学习交流群/2026-05-26/`
-- Image generation path: built-in `$imagegen` skill.
+- Compare all PNG comic images currently under both roots.
+- Preserve the target group story scripts, dates, filenames, HTML image references, and no-`沙雕鱼` role rule.
+- Optimize image style only where it moves the target closer to the reference without copying reference fixed characters.
 
 ## Hard Rules
 - 所有说明与总结使用简体中文。
@@ -26,12 +22,11 @@
 ## Phases
 | Phase | Status | Notes |
 |---|---|---|
-| 1. Reconfirm references and current state | complete | Read `AGENTS.md`, reference scripts/pages/images, current worktree, memory notes, and three target chat records. |
-| 2. Create target directories and copy chat records | complete | Created three date folders and copied chat logs into stable names. |
-| 3. Write three episode scripts | complete | Created 6 + 7 + 6 page scripts and removed inherited fixed-role assumptions. |
-| 4. Generate comic images and derivatives | complete | Generated 19 PNG pages with `$imagegen`, normalized title/footer strips, and generated WebP derivatives. |
-| 5. Generate date pages and update root catalog | complete | Created three date pages and added the new group episodes to root `index.html`. |
-| 6. Validate outputs | complete | Checked file presence, dimensions, image refs, forbidden role text, contact sheet, and browser page loads. |
+| 1. Reconfirm references and current state | complete | Read project rules, prior planning files, and current image inventories. |
+| 2. Generate comparison evidence | complete | Built full contact sheets for 29 reference PNGs and 19 target PNGs. |
+| 3. Identify style differences | complete | Main gap was target title/footer strips being cleaner and less like reference comic pages. |
+| 4. Optimize target images | complete | Repainted title/footer/frame layer with reference-style black borders and vector gold star markers; regenerated WebP derivatives. |
+| 5. Validate optimized output | complete | Confirmed 19 PNGs, 57 WebPs, no missing HTML image references, clean target forbidden-text check, and optimized contact sheet review. |
 
 ## Decisions
 - Use one stable title per episode:
@@ -43,6 +38,7 @@
 - Generate complete pages without waiting for extra user confirmation, because the current instruction is to implement the approved plan.
 - Keep root `index.html` changes limited to adding the new group and its three episodes.
 - User correction: `人类高质量前端框架群` has no `沙雕鱼` role; remove that fixed-role assumption from scripts and image prompts.
+- Current optimization decision: do not regenerate all image bodies, because the story panels already match scripts and safety constraints. Apply deterministic style-layer optimization to title/footer/page frame, which is the most consistent visual mismatch against the reference directory.
 
 ## Errors Encountered
 | Error | Attempt | Resolution |
