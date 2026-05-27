@@ -18,6 +18,7 @@
 - Regenerated page 1 from scratch with `$imagegen`; the new title uses the 2026-05-25 format with book-title marks: `20260526话 第一页《中转用太快，GPT慢成树懒》`. Copied it to the stable page 1 PNG and refreshed its WebP derivatives.
 - `$imagegen` regenerated pages 2 and 3 with 2026-05-25-style book-title title bars; copied both stable PNGs into `AI全书学习交流群/2026-05-26/` and refreshed their WebP derivatives.
 - `$imagegen` regenerated pages 4 and 5 with book-title title bars; copied both stable PNGs and refreshed WebP derivatives.
+- `$imagegen` regenerated pages 6 and 7 with book-title title bars; page 7 is now a finished illustrated comic rather than the previous small UI-placeholder-style asset. Copied stable PNGs and refreshed WebP derivatives.
 
 ## 2026-05-26
 - Started task for `AI编辑器技术讨论-二群` dates `2026-05-24` and `2026-05-25`.
