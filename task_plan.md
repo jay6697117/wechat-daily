@@ -1,47 +1,38 @@
 # Task Plan
 
 ## Goal
-为 `AI编辑器技术讨论-二群` 生成 2026-05-24 和 2026-05-25 两天的微信群日更漫画资料。必须先阅读项目 `CLAUDE.md`，参考 `AI全书学习交流群/2026-05-25/` 的完整微信群漫画生成逻辑，并使用 agent team 分工实施。
+重新生成 `AI全书学习交流群/2026-05-26/` 下的 10 张漫画 PNG，并同步更新对应 WebP 派生图。生图必须优先使用项目内 `.codex/skills/codex-gateway-imagegen`；如果该 skill 调用失败，再使用 `$imagegen` 内置生图路径。视觉风格以 `AI全书学习交流群/2026-05-25/` 的成品漫画为参考。
 
-## Output Directories
-- `AI编辑器技术讨论-二群/2026-05-24/`
-- `AI编辑器技术讨论-二群/2026-05-25/`
-
-## Required Outputs Per Day
-- `YYYY-MM-DD_AI编辑器技术讨论-二群_聊天记录.txt`
-- `YYYYMMDD话_<短标题>_剧本.md`
-- 用户确认剧本和第一页后，再继续生成 PNG 漫画页与 `index.html`。
+## Scope
+- Target directory: `AI全书学习交流群/2026-05-26/`
+- Reference directory: `AI全书学习交流群/2026-05-25/`
+- Script source: `AI全书学习交流群/2026-05-26/20260526话_额度迷宫与漫画馆出道_剧本.md`
+- Output files: existing `*.png`, `*.webp`, `*-512w.webp`, `*-768w.webp`
 
 ## Hard Rules
-- 先用 `wechat-cli` 导出当天聊天记录。
-- 先根据完整聊天记录生成剧本。
-- 用户确认剧本后，才生成漫画图和 `index.html`。
-- 批量出图前先生成并核查第一页；第一页确认后再继续后续页面。
-- 页数不能固定，必须由当天聊天量和剧本分镜决定。
-- 图片生成必须使用 `.claude/skills/codex-gateway-imagegen` / helper 脚本，尺寸 `1024x1536`。
-- 参考图优先使用 `AI全书学习交流群/2026-05-24/` 的漫画图；参考生成逻辑使用 `AI全书学习交流群/2026-05-25/` 的完整产物。
-- 账号、token、网络节点、平台链接等敏感内容只能抽象成漫画笑点，不能写教程、真实链接、价格、token 字符串或绕过步骤。
+- 所有新图保持 `1024x1536` 竖版。
+- 先使用 `.codex/skills/codex-gateway-imagegen/scripts/generate_gateway_image.py`。
+- 网关失败时，按用户要求切到 `$imagegen`。
+- 参考 `2026-05-25` 的漫画风格：顶部白底黑边标题条、底部白底黑边吐槽条、粗黑分镜、深蓝群聊宇宙背景、圆形头像、白色圆角黑描边对白气泡、彩色昵称牌。
+- 不写真实 URL、账号交易、支付/接码/节点教程、token 字符串或绕过流程。
+- 为避免失败覆盖现有产物，先生成到临时文件；通过尺寸和文件存在校验后再替换目标 PNG，并重新生成 WebP 派生图。
 
 ## Phases
-| Phase | Status | Owner | Notes |
-|---|---|---|---|
-| 1. Restore context and reset planning files | complete | main | Ran session catchup, read current planning files and project CLAUDE.md, corrected target group to `AI编辑器技术讨论-二群`. |
-| 2. Create agent team and task list | complete | main | Created team `wechat-editor-comics-20260524-25`; created shared tasks and dependencies. |
-| 3. Analyze reference generation logic | complete | reference-analyst | Reference workflow analysis task is completed. |
-| 4. Export target chat records | complete | main | Exported both dates with `--limit 5000`; 2026-05-24 has 185 lines and 2026-05-25 has 768 lines. |
-| 5. Draft scripts for both dates | complete | main | Main controller wrote both scripts after script agents failed to produce files. |
-| 6. Validate script files and wait for confirmation | complete | main | Verified script files, page counts, and no real URLs; waiting for user approval before image generation. |
-| 7. Generate first page after script approval | complete | main | 2026-05-24 first page is present and visually checked in prior progress. User now asked to continue generation for both target dates. |
-| 8. Batch-generate remaining 2026-05-24 pages and index | complete | main | Generated pages 4-6, regenerated pages 4-5 after user corrected `me` to `满洲第一巴图鲁`, and created `index.html`; HTML references all 6 PNGs. |
-| 9. Generate 2026-05-25 pages and index | in_progress | main | Current filesystem has script and chat record only; no PNG or index yet. Previous first-page gateway attempts failed, so retry with explicit image tool choice. |
+| Phase | Status | Notes |
+|---|---|---|
+| 1. Restore context and read rules | complete | Read skill docs, existing planning files, session catchup, target/reference directories. |
+| 2. Inspect script, references, and current assets | in_progress | Need extract all 10 page scripts and inspect visual reference/current image quality. |
+| 3. Build per-page prompts | pending | Use page script text plus shared style constraints from 2026-05-25. |
+| 4. Regenerate PNG pages | pending | Gateway first, fallback `$imagegen` on failure. Replace only after successful output. |
+| 5. Regenerate WebP derivatives | pending | Refresh full, 768w, and 512w WebP for every replaced PNG. |
+| 6. Validate outputs and report | pending | Check dimensions, file refs in index, git diff, and final paths. |
 
 ## Decisions
-- Because project rules require approval gates, this session will first produce chat records and scripts for both days.
-- Do not generate PNGs or `index.html` until scripts are approved.
-- Use agent team for reference analysis, chat extraction, and script drafting.
+- Treat “重新生图” as permission to replace the existing 2026-05-26 comic image assets after each replacement candidate is successfully generated and validated.
+- Use the 2026-05-25 PNG pages as style references, not as content references.
+- Keep filenames stable so the existing `index.html` keeps working unless validation shows broken references.
 
 ## Errors Encountered
 | Error | Attempt | Resolution |
 |---|---|---|
-| Planning files temporarily referenced the wrong target group | 1 | User confirmed the correct target is `AI编辑器技术讨论-二群`; planning files were corrected back to that group. |
-| 2026-05-25 gateway stream closed before image result | prior session | Continue with helper using explicit `tool_choice` for `image_generation`; if it fails, record exact error and adjust once. |
+| Previous session catchup reported gateway connection resets/no image result | prior session | Continue with `.codex` skill first per user request; on live failure, switch to `$imagegen` instead of repeatedly changing the prompt. |

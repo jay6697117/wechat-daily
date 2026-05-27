@@ -1,5 +1,17 @@
 # Findings
 
+## Current Task - AI全书学习交流群 2026-05-26 Regeneration
+- Target directory: `AI全书学习交流群/2026-05-26/`.
+- Reference directory: `AI全书学习交流群/2026-05-25/`.
+- User explicitly requested `.codex/skills/codex-gateway-imagegen` first, then `$imagegen` fallback if that skill fails.
+- Target script file exists: `AI全书学习交流群/2026-05-26/20260526话_额度迷宫与漫画馆出道_剧本.md`.
+- Target has 10 PNG pages, each currently `1024x1536`.
+- Existing target PNG sizes show pages 7-10 are much smaller than pages 1-6: pages 7-10 are around 156-177 KB, while most earlier pages and 2026-05-25 references are around 2.6-3.0 MB. This suggests pages 7-10 need especially careful visual validation after regeneration.
+- Visual contact-sheet review confirms 2026-05-25 reference pages use the intended finished comic style: dense three-panel pages, heavy borders, title/footer strips, dark blue theatrical group-chat stage, illustrated characters, and many speech bubbles.
+- Visual contact-sheet review confirms 2026-05-26 pages 7-10 currently look like dark UI/chat-card placeholders rather than finished comic pages, matching their small file sizes.
+- Existing `index.html` references stable 2026-05-26 filenames, so keeping filenames unchanged avoids HTML edits unless validation finds broken refs.
+- Safe replacement strategy: generate to temporary output first, validate dimensions, then replace the stable PNG and regenerate WebP derivatives.
+
 ## Current Task
 - Target group: `AI编辑器技术讨论-二群`.
 - Target dates: `2026-05-24` and `2026-05-25`.
