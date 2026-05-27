@@ -1,5 +1,18 @@
 # Progress
 
+## 2026-05-27 - Generate Codex AGENTS.md
+- Started task to generate project-level `AGENTS.md` from `CLAUDE.md`.
+- Searched memory registry for `wechat-daily`, `CLAUDE.md`, and `AGENTS.md`; no relevant prior memory entry was found.
+- Checked project root files: `CLAUDE.md`, `task_plan.md`, `findings.md`, and `progress.md` exist; `AGENTS.md` was not present in the initial file listing.
+- Read `planning-with-files` instructions and existing planning files because this is a project file generation task with persistent planning already present.
+- Read `CLAUDE.md`; it contains project-specific daily comic workflow and validation rules.
+- Confirmed `.codex/skills/codex-gateway-imagegen/scripts/generate_gateway_image.py` exists, so Codex `AGENTS.md` should reference the `.codex` helper path rather than the Claude helper path.
+- Updated `task_plan.md` and `findings.md` for the current `AGENTS.md` generation task.
+- Created `AGENTS.md` in the project root.
+- Validated `AGENTS.md` contains the expected core sections: comic workflow, image generation settings, fixed character definitions, character consistency rules, content safety limits, `index.html` verification, and Codex execution notes.
+- Validated `AGENTS.md` references `.codex/skills/codex-gateway-imagegen` and does not keep `.claude` as the primary helper path.
+- Marked the current `AGENTS.md` generation task complete in `task_plan.md`.
+
 ## 2026-05-27
 - Started current task for `AI全书学习交流群/2026-05-26` comic image regeneration.
 - Used `planning-with-files` because the task requires multi-step asset inspection, image generation, fallback handling, derivative regeneration, and validation.

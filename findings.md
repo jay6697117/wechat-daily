@@ -1,5 +1,12 @@
 # Findings
 
+## Current Task - Generate Codex AGENTS.md
+- Source file `CLAUDE.md` exists in the project root and has 81 lines.
+- No existing `AGENTS.md` was listed by `rg --files`, so this task creates a new project-level Codex instruction file.
+- The source rules cover daily comic directory structure, comic generation workflow, image generation settings, visual style, fixed character definitions, character consistency hard rules, content safety limits, and `index.html` validation.
+- The repository contains both `.claude/skills/codex-gateway-imagegen/...` and `.codex/skills/codex-gateway-imagegen/...`.
+- For Codex-facing instructions, the helper path should prefer `.codex/skills/codex-gateway-imagegen/scripts/generate_gateway_image.py` while preserving the original workflow semantics from `CLAUDE.md`.
+
 ## Current Task - AI全书学习交流群 2026-05-26 Regeneration
 - Target directory: `AI全书学习交流群/2026-05-26/`.
 - Reference directory: `AI全书学习交流群/2026-05-25/`.
