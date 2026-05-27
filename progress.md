@@ -34,6 +34,9 @@
   - `人类高质量前端框架群/2026-05-26/index.html`
   - `人类高质量前端框架群/2026-05-27/index.html`
 - Updated root `index.html` with a new `人类高质量前端框架群` catalog group and three episode links.
+- Static validation passed: 19 PNG pages are present and `1024x1536`, 57 WebP derivatives are present, and all three date pages have no missing image references.
+- Text validation passed: no `沙雕鱼`, `鱼形`, `吉祥物`, or `AI全书学习交流群` text remains in `人类高质量前端框架群/`.
+- Browser validation passed over a local `python3 -m http.server 8765`: root catalog with `#high-quality-frontend` loaded, and the 2026-05-25, 2026-05-26, and 2026-05-27 pages opened successfully. The initial favicon 404 was fixed by adding empty favicon links to the three date pages.
 
 ## 2026-05-27 - Generate Codex AGENTS.md
 - Started task to generate project-level `AGENTS.md` from `CLAUDE.md`.

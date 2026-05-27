@@ -29,9 +29,9 @@
 | 1. Reconfirm references and current state | complete | Read `AGENTS.md`, reference scripts/pages/images, current worktree, memory notes, and three target chat records. |
 | 2. Create target directories and copy chat records | complete | Created three date folders and copied chat logs into stable names. |
 | 3. Write three episode scripts | complete | Created 6 + 7 + 6 page scripts and removed inherited fixed-role assumptions. |
-| 4. Generate comic images and derivatives | in_progress | Use `$imagegen`, save PNGs, generate WebP derivatives, validate dimensions. |
-| 5. Generate date pages and update root catalog | pending | Reuse reference reader page style and add new group to root `index.html`. |
-| 6. Validate outputs | pending | Check file presence, dimensions, image refs, and browser/page behavior where feasible. |
+| 4. Generate comic images and derivatives | complete | Generated 19 PNG pages with `$imagegen`, normalized title/footer strips, and generated WebP derivatives. |
+| 5. Generate date pages and update root catalog | complete | Created three date pages and added the new group episodes to root `index.html`. |
+| 6. Validate outputs | complete | Checked file presence, dimensions, image refs, forbidden role text, contact sheet, and browser page loads. |
 
 ## Decisions
 - Use one stable title per episode:
@@ -48,3 +48,5 @@
 | Error | Attempt | Resolution |
 |---|---|---|
 | None | current task | Not applicable. |
+| 2026-05-27 page 2 imagegen server error | First attempt returned a server error | Retried with a shorter prompt and copied the successful image. |
+| Generated footer glyph squares | Decorative footer stars rendered as square boxes in local font | Re-ran title/footer normalization without decorative glyphs and regenerated WebP derivatives. |

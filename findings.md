@@ -14,6 +14,12 @@
 - Relevant memory confirmed imagegen prompt practice: preserve detailed user constraints and copy final generated image assets into the project workspace rather than leaving them under generated image defaults.
 - User correction: this group has no `沙雕鱼` character. Scripts and image prompts must not include `沙雕鱼`, fish mascots, or inherited fixed characters from `AI全书学习交流群`; characters should be derived from the daily script and original nicknames only.
 - Full visual reference pass completed for all requested style references: 14 PNG pages in `AI全书学习交流群/2026-05-25/` and 10 PNG pages in `AI全书学习交流群/2026-05-26/` were inspected, plus contact sheets under `tmp/`. These references are style-only: layout, title/footer strips, panel density, deep blue group-chat stage, thick black borders, white speech bubbles, colored nickname tags, and comic pacing. They must not donate fixed characters or fish mascots to the new group.
+- Output validation findings:
+  - 19 PNG pages exist under `人类高质量前端框架群/2026-05-25` to `2026-05-27`, all `1024x1536`.
+  - 57 WebP derivatives exist: full, `-768w`, and `-512w` for each PNG.
+  - Three date `index.html` pages have no missing image references.
+  - `rg` found no `沙雕鱼`, `鱼形`, `吉祥物`, or `AI全书学习交流群` text in the new group directory.
+  - Browser verification opened the root catalog hash and all three new date pages over `http://127.0.0.1:8765/`.
 - Final script files:
   - `人类高质量前端框架群/2026-05-25/20260525话_API钥匙与十连Agent_剧本.md`
   - `人类高质量前端框架群/2026-05-26/20260526话_上下文瘦身与漫画馆出道_剧本.md`
