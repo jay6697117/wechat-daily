@@ -1,33 +1,48 @@
 # Task Plan
 
 ## Goal
-根据项目根目录的 `CLAUDE.md` 生成 Codex 使用的项目级 `AGENTS.md`，保留现有日更漫画工作流、视觉风格、角色一致性、内容安全和 `index.html` 验证规则，并把 Claude 专属路径适配为 Codex 项目路径。
+为 `人类高质量前端框架群` 生成 2026-05-25、2026-05-26、2026-05-27 三天的日更漫画产物：日期目录、聊天记录副本、剧本 Markdown、漫画 PNG/WebP、日期页 `index.html`，并接入根目录 `index.html`。
 
 ## Scope
-- Source file: `CLAUDE.md`
-- Target file: `AGENTS.md`
-- Keep project-specific rules intact.
-- Adapt image generation helper path from `.claude/skills/...` to `.codex/skills/...` because this is for Codex.
+- Source chat records:
+  - `2026-05-25_人类高质量前端框架群_聊天记录.txt`
+  - `2026-05-26_人类高质量前端框架群_聊天记录.txt`
+  - `2026-05-27_人类高质量前端框架群_聊天记录.txt`
+- Target root: `人类高质量前端框架群/`
+- Reference style:
+  - `AI全书学习交流群/2026-05-25/`
+  - `AI全书学习交流群/2026-05-26/`
+- Image generation path: built-in `$imagegen` skill.
 
 ## Hard Rules
-- 不删除或回滚用户已有业务产物。
-- 不改动漫画、聊天记录、脚本、HTML 或图片文件。
-- `AGENTS.md` 正文使用简体中文。
-- 代码路径、命令、文件名和标识符保持原样。
-- 只做项目级 agent 指令转换，不扩展无关工程任务。
+- 所有说明与总结使用简体中文。
+- 剧本、HTML、文件名、代码和标识符按项目既有风格处理。
+- 每张漫画 PNG 固定 `1024x1536`。
+- 不做真实微信截图，不画真实群友肖像。
+- 不展示真实 URL、API key、token、手机号、支付链路、绕过流程、微信自动化教程或投资建议。
+- 本群不使用 `沙雕鱼` 固定角色；剧本和图片角色必须完全根据当天聊天昵称与剧情编排，不引入鱼形吉祥物。
+- 图片必须最终复制到项目目录，不能只留在 `$CODEX_HOME/generated_images`。
 
 ## Phases
 | Phase | Status | Notes |
 |---|---|---|
-| 1. Read source and current state | complete | Read `CLAUDE.md`, checked current files and existing planning files. |
-| 2. Convert project rules to Codex `AGENTS.md` | complete | Preserved workflow and adapted `.codex` image helper path. |
-| 3. Validate generated file | complete | Checked key sections, `.codex` helper path, and no `.claude` helper preference in `AGENTS.md`. |
-| 4. Report result | complete | Ready to summarize file path and validation. |
+| 1. Reconfirm references and current state | complete | Read `AGENTS.md`, reference scripts/pages/images, current worktree, memory notes, and three target chat records. |
+| 2. Create target directories and copy chat records | complete | Created three date folders and copied chat logs into stable names. |
+| 3. Write three episode scripts | complete | Created 6 + 7 + 6 page scripts and removed inherited fixed-role assumptions. |
+| 4. Generate comic images and derivatives | in_progress | Use `$imagegen`, save PNGs, generate WebP derivatives, validate dimensions. |
+| 5. Generate date pages and update root catalog | pending | Reuse reference reader page style and add new group to root `index.html`. |
+| 6. Validate outputs | pending | Check file presence, dimensions, image refs, and browser/page behavior where feasible. |
 
 ## Decisions
-- Treat `CLAUDE.md` as the source of truth for project-specific workflow rules.
-- Keep both `.codex` and `.claude` context implicit in the repository, but make `.codex/skills/codex-gateway-imagegen` the Codex-facing primary helper path in `AGENTS.md`.
-- Do not alter previous comic-generation assets or site files as part of this task.
+- Use one stable title per episode:
+  - `20260525话《API钥匙与十连Agent》`
+  - `20260526话《上下文瘦身与漫画馆出道》`
+  - `20260527话《Vue叉车与语音Rapper》`
+- Use page counts from subagent/read-only analysis: 6, 7, and 6 pages.
+- Use `$imagegen` built-in mode directly because the user explicitly requested `$imagegen`.
+- Generate complete pages without waiting for extra user confirmation, because the current instruction is to implement the approved plan.
+- Keep root `index.html` changes limited to adding the new group and its three episodes.
+- User correction: `人类高质量前端框架群` has no `沙雕鱼` role; remove that fixed-role assumption from scripts and image prompts.
 
 ## Errors Encountered
 | Error | Attempt | Resolution |

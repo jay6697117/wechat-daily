@@ -1,5 +1,23 @@
 # Findings
 
+## Current Task - 人类高质量前端框架群 2026-05-25 to 2026-05-27
+- Target group root `人类高质量前端框架群/` did not exist before implementation.
+- Source chat record line counts are 121, 344, and 125 lines for 2026-05-25, 2026-05-26, and 2026-05-27.
+- Reference scripts use a structure of basic info, style principles, fixed characters, one-sentence story, page-by-page script, final image filenames, HTML path, and safety notes.
+- Reference images are `1024x1536` PNGs with white title strips, black borders, deep blue group-chat/cosmic stage, three or four panels, white speech bubbles, colored nickname tags, and a bottom punchline strip.
+- Current root `index.html` has two catalog groups: `AI全书学习交流群` and `AI编辑器技术讨论-二群`; the new group should be added as a third catalog group.
+- Subagent read-only analysis recommended page counts and story lines:
+  - 2026-05-25: 6 pages, API key/protocol compatibility, WeChat automation, semiconductor tangent, Windows-MCP/UIA, Cursor subagents.
+  - 2026-05-26: 7 pages, node/payment risk, AI sharing meeting, context slimming, subagents, workflow tools, comic museum launch, stock-market finale.
+  - 2026-05-27: 6 pages, compliance mist, Skill card, market/token payback, Vue forklift/cement joke, voice input as rapper, Codex/subagent/call-for-update finale.
+- Safety abstractions needed for this group: API keys, token bills, model platforms, KYC, VPN/nodes, payments, WeChat automation/export tools, third-party plugins, stock gains, work-injury jokes, and image/XML payloads must be rendered only as abstract props.
+- Relevant memory confirmed imagegen prompt practice: preserve detailed user constraints and copy final generated image assets into the project workspace rather than leaving them under generated image defaults.
+- User correction: this group has no `沙雕鱼` character. Scripts and image prompts must not include `沙雕鱼`, fish mascots, or inherited fixed characters from `AI全书学习交流群`; characters should be derived from the daily script and original nicknames only.
+- Final script files:
+  - `人类高质量前端框架群/2026-05-25/20260525话_API钥匙与十连Agent_剧本.md`
+  - `人类高质量前端框架群/2026-05-26/20260526话_上下文瘦身与漫画馆出道_剧本.md`
+  - `人类高质量前端框架群/2026-05-27/20260527话_Vue叉车与语音Rapper_剧本.md`
+
 ## Current Task - Generate Codex AGENTS.md
 - Source file `CLAUDE.md` exists in the project root and has 81 lines.
 - No existing `AGENTS.md` was listed by `rg --files`, so this task creates a new project-level Codex instruction file.
