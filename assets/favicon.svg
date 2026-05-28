@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="faviconTitle">
+  <title id="faviconTitle">WeChat Daily Comic Gallery favicon</title>
+  <defs>
+    <linearGradient id="faviconBg" x1="6" y1="5" x2="58" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#172554"/>
+      <stop offset="0.5" stop-color="#2e1065"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="faviconPaper" x1="15" y1="16" x2="48" y2="51" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fef3c7"/>
+      <stop offset="0.52" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="faviconSpark" x1="42" y1="10" x2="58" y2="29" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fbbf24"/>
+      <stop offset="0.55" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="15" fill="url(#faviconBg)"/>
+  <path d="M14 18C14 14.134 17.134 11 21 11H42C45.866 11 49 14.134 49 18V39C49 42.866 45.866 46 42 46H29.5L20.6 52.3C19.401 53.148 17.75 52.29 17.75 50.821V45.2C15.502 43.989 14 41.607 14 39V18Z" fill="url(#faviconPaper)" stroke="#020617" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M23 20H43M23 31H43M32.5 20V43M23 42H38" stroke="#020617" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="25" cy="26" r="2.7" fill="#34d399"/>
+  <circle cx="40" cy="26" r="2.7" fill="#f59e0b"/>
+  <path d="M49.5 9L52.1 15.4L58.5 18L52.1 20.6L49.5 27L46.9 20.6L40.5 18L46.9 15.4L49.5 9Z" fill="url(#faviconSpark)" stroke="#020617" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,74 @@
+- generic [ref=e2]:
+  - navigation "站点品牌" [ref=e3]:
+    - link "返回群聊日更漫画馆首页" [ref=e4] [cursor=pointer]:
+      - /url: ./
+      - img [ref=e5]
+      - generic [ref=e6]:
+        - generic [ref=e7]: 群聊日更漫画馆
+        - generic [ref=e8]: WeChat Daily Comic Gallery
+    - generic [ref=e9]: 日更归档已就绪
+  - banner [ref=e10]:
+    - generic [ref=e11]: ✨ 群聊日更 · 漫画馆门户
+    - heading "把每天的群聊，收进一座舒服的漫画馆。" [level=1] [ref=e12]
+    - paragraph [ref=e13]: 这里按群整理每日聊天记录漫画。先选择左侧微信群，右侧即刻渲染对应日期的漫画话数。轻点卡片直达精美漫画舞台。
+    - generic "内容统计" [ref=e14]:
+      - generic [ref=e15]:
+        - strong [ref=e16]: "3"
+        - generic [ref=e17]: 已收录群
+      - generic [ref=e18]:
+        - strong [ref=e19]: "9"
+        - generic [ref=e20]: 漫画总话数
+      - generic [ref=e21]:
+        - strong [ref=e22]: 2026-05-27
+        - generic [ref=e23]: 最新更新
+  - main [ref=e24]:
+    - region "选择群入口" [ref=e25]:
+      - generic [ref=e26]:
+        - heading "选择群入口" [level=2] [ref=e27]
+        - paragraph [ref=e28]: 点击下方群磁贴，切换漫画话数目录
+      - generic [ref=e29]:
+        - button "AI全书学习交流群 围绕 AI 工具、账号事故、硬盘急诊和群聊吐槽展开的日更漫画。 3 话漫画" [ref=e30] [cursor=pointer]:
+          - generic [ref=e31]: 📘
+          - generic [ref=e32]:
+            - heading "AI全书学习交流群" [level=3] [ref=e33]
+            - paragraph [ref=e34]: 围绕 AI 工具、账号事故、硬盘急诊和群聊吐槽展开的日更漫画。
+            - generic [ref=e36]: 3 话漫画
+        - button "AI编辑器技术讨论-二群 围绕 AI 编辑器、ComfyUI、生图工具、显卡焦虑和云端订阅展开的技术群聊漫画。 3 话漫画" [ref=e37] [cursor=pointer]:
+          - generic [ref=e38]: 💻
+          - generic [ref=e39]:
+            - heading "AI编辑器技术讨论-二群" [level=3] [ref=e40]
+            - paragraph [ref=e41]: 围绕 AI 编辑器、ComfyUI、生图工具、显卡焦虑和云端订阅展开的技术群聊漫画。
+            - generic [ref=e43]: 3 话漫画
+        - button "人类高质量前端框架群 围绕前端框架、AI 工具、subagent、上下文瘦身、Vue 叉车和语音输入展开的技术群聊漫画。 3 话漫画" [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: 🧩
+          - generic [ref=e46]:
+            - heading "人类高质量前端框架群" [level=3] [ref=e47]
+            - paragraph [ref=e48]: 围绕前端框架、AI 工具、subagent、上下文瘦身、Vue 叉车和语音输入展开的技术群聊漫画。
+            - generic [ref=e50]: 3 话漫画
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e54]: 3 话 · 按日期倒序
+        - heading "AI全书学习交流群" [level=2] [ref=e55]
+        - paragraph [ref=e56]: 围绕 AI 工具、账号事故、硬盘急诊和群聊吐槽展开的日更漫画。
+      - generic [ref=e57]:
+        - link "20260526话《额度迷宫与漫画馆出道》 从中转水表、支付门、额度焦虑、小作文门、配置迷宫到漫画馆出道、职场吐槽和假 Codex 的一整天群聊小剧场。" [ref=e58] [cursor=pointer]:
+          - /url: AI全书学习交流群/2026-05-26/index.html
+          - generic [ref=e59]:
+            - heading "20260526话《额度迷宫与漫画馆出道》" [level=3] [ref=e60]
+            - paragraph [ref=e61]: 从中转水表、支付门、额度焦虑、小作文门、配置迷宫到漫画馆出道、职场吐槽和假 Codex 的一整天群聊小剧场。
+          - generic [ref=e62]: →
+        - link "20260525话《账号拉闸，群聊开庭》 从 Claude Code 输出爆掉到账号拉闸、验证门、工具跑偏 and 职场坑洞的一整天群聊小剧场。" [ref=e63] [cursor=pointer]:
+          - /url: AI全书学习交流群/2026-05-25/index.html
+          - generic [ref=e64]:
+            - heading "20260525话《账号拉闸，群聊开庭》" [level=3] [ref=e65]
+            - paragraph [ref=e66]: 从 Claude Code 输出爆掉到账号拉闸、验证门、工具跑偏 and 职场坑洞的一整天群聊小剧场。
+          - generic [ref=e67]: →
+        - link "20260524话《硬盘一转，群聊开会》 沙雕鱼的机械硬盘疑似阵亡，群聊瞬间变成远程硬盘急诊，深夜又接上账号陨落。" [ref=e68] [cursor=pointer]:
+          - /url: AI全书学习交流群/2026-05-24/index.html
+          - generic [ref=e69]:
+            - heading "20260524话《硬盘一转，群聊开会》" [level=3] [ref=e70]
+            - paragraph [ref=e71]: 沙雕鱼的机械硬盘疑似阵亡，群聊瞬间变成远程硬盘急诊，深夜又接上账号陨落。
+          - generic [ref=e72]: →
+  - contentinfo [ref=e73]:
+    - generic [ref=e76]: 线上漫画馆：按群组与日期浏览
+    - generic [ref=e77]: © WeChat Daily Comic Gallery

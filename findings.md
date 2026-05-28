@@ -1,5 +1,13 @@
 # Findings
 
+## Current Task - Homepage favicon and logo
+- `index.html` is currently a standalone homepage with inline CSS/JS.
+- The page currently disables favicon loading with `<link rel="icon" href="data:," />`, so browsers have no project identity icon.
+- The visible homepage starts directly with the hero panel; there is no separate top-left brand/logo lockup.
+- The current homepage visual system uses a dark midnight background, amber/purple/cyan highlights, group catalog cards, and a comic gallery positioning.
+- Best fit for the favicon/logo is a vector mark combining chat bubble, comic panel grid, daily sparkle, and dark comic-stage colors.
+- No `assets/`, `public/`, or `images/` directory exists at the project root, so `assets/` is the smallest conventional location for shared homepage brand assets.
+
 ## Current Task - 人类高质量前端框架群 2026-05-25 to 2026-05-27
 - Latest user review rejects the previous partial style-layer fix and requires all 19 target PNG pages to be regenerated with `$imagegen`.
 - Required fixes for the regeneration pass:
