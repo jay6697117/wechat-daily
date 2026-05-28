@@ -1,6 +1,25 @@
 # Progress
 
 ## 2026-05-28 - 人类高质量前端框架群 style comparison and optimization
+- User reviewed the delivered target pages and rejected the partial title/footer/frame repair as insufficient.
+- New execution direction: regenerate all 19 `人类高质量前端框架群` PNG comic pages with built-in `$imagegen`, then rebuild WebP derivatives and replace the three date `index.html` pages with the reference-group reader style/functionality.
+- Confirmed current `task_plan.md` already reflects the superseded decision and the new 19-page regeneration requirement.
+- Re-read target scripts, target PNG inventory, reference PNG inventory, and the full `AI全书学习交流群/2026-05-26/index.html` reader implementation.
+- Re-opened visual references: `tmp/style_compare_ai_books_all.jpg`, `tmp/reference_ai_books_20260525_contact_sheet.jpg`, and `tmp/reference_ai_books_20260526_contact_sheet.jpg`.
+- Regenerated and copied `2026-05-26` page 4 first because it directly matched the user's floating-bubble/no-character complaint; visual inspection confirmed visible distinct speakers and 11 subagent robots.
+- Regenerated and copied all six `2026-05-25` target PNG pages with built-in `$imagegen`; every copied file reports `1024 x 1536`.
+- During `2026-05-26` page 1 regeneration, the first new result was landscape `1536 x 1024`; regenerated with stricter portrait constraints and copied only after temporary dimension validation passed.
+- Regenerated and copied all seven `2026-05-26` target PNG pages with built-in `$imagegen`; every stable file now reports `1024 x 1536`.
+- `2026-05-26` page 7 repeatedly generated a wrong footer line while the comic body was usable; keep the regenerated body and fix the exact title/footer in the final normalization pass.
+- Regenerated and copied all six `2026-05-27` target PNG pages with built-in `$imagegen`; page 3 was regenerated again because the first attempt drifted into a stock-market panel.
+- Normalized title and footer strips for all 19 regenerated PNGs using a local Pillow pass with vector gold stars and exact script text; this preserves the regenerated comic bodies and avoids model footer text drift.
+- Regenerated all 57 WebP derivatives after title/footer normalization.
+- Rebuilt the three target date `index.html` pages from the `AI全书学习交流群/2026-05-26/index.html` reader CSS/JS structure, replacing only the episode metadata, image lists, and archive labels.
+- Static validation passed: 19 PNGs are `1024 x 1536`, all 57 WebP derivatives exist, and all local HTML image references resolve.
+- Forbidden text validation passed inside `人类高质量前端框架群/`: no `沙雕鱼`, `鱼形`, `吉祥物`, or `AI全书学习交流群` text.
+- Generated and visually inspected `tmp/hq_frontend_regenerated_contact_sheet.jpg` for all 19 regenerated target pages.
+- Browser validation over `http://127.0.0.1:8765/` loaded the three date pages, found zero console warnings/errors on checked pages, confirmed visible WebP requests returned 200, and verified fullscreen reader open/close behavior.
+- Stopped the local validation server and removed transient Playwright/screenshot/temp files.
 - Started continuation goal: compare `AI全书学习交流群/` and `人类高质量前端框架群/` comic image styles, then optimize the target group.
 - Refreshed `AGENTS.md`, `task_plan.md`, `findings.md`, and `progress.md`.
 - Inventoried current PNG files:

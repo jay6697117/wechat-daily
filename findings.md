@@ -1,6 +1,21 @@
 # Findings
 
 ## Current Task - 人类高质量前端框架群 2026-05-25 to 2026-05-27
+- Latest user review rejects the previous partial style-layer fix and requires all 19 target PNG pages to be regenerated with `$imagegen`.
+- Required fixes for the regeneration pass:
+  - Footer/title/page-frame style must match the `AI全书学习交流群` comic pages rather than looking like a clean post-processed strip.
+  - Named speakers must have distinct visible character designs, including varied gender presentation, silhouette, hair, clothing, and props.
+  - Every speech bubble must have a visible speaker and a tail pointing to that speaker; no floating bubble without a character.
+  - The three target `index.html` pages must match the reference date-page reader functionality and visual style: sticky header, reader actions, full-screen viewer, zoom controls, keyboard navigation, loader, page cards, and WebP `srcset`.
+- Final regeneration validation:
+  - All 19 target PNGs were regenerated through built-in `$imagegen` and then normalized only on title/footer strips to correct model text drift while preserving the regenerated comic bodies.
+  - All 19 target PNGs are `1024x1536`.
+  - All 57 WebP derivatives exist and were regenerated after title/footer normalization.
+  - The three target `index.html` files now use the reference reader structure and functionality.
+  - Static HTML image reference validation passed for all three date pages.
+  - Browser validation over `http://127.0.0.1:8765/` found no console errors or warnings on the tested target pages, and loaded visible WebP requests with HTTP 200.
+  - Fullscreen reader open/close was verified by Playwright on the regenerated reader page.
+  - New visual contact sheet: `tmp/hq_frontend_regenerated_contact_sheet.jpg`.
 - Current style comparison task:
   - `AI全书学习交流群/` currently has 29 PNG comic pages across 2026-05-24, 2026-05-25, and 2026-05-26; all are `1024x1536`.
   - `人类高质量前端框架群/` currently has 19 PNG comic pages across 2026-05-25, 2026-05-26, and 2026-05-27; all are `1024x1536`.
